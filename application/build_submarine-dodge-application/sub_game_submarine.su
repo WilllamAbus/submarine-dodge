@@ -1,0 +1,5 @@
+sources/app/submarine_game/sub_game_submarine.cpp:14:6:void sub_game_submarine_setup()	0	static
+sources/app/submarine_game/sub_game_submarine.cpp:20:6:void sub_game_submarine_up()	0	static
+sources/app/submarine_game/sub_game_submarine.cpp:26:6:void sub_game_submarine_down()	0	static
+sources/app/submarine_game/sub_game_submarine.cpp:32:6:void sub_game_submarine_reset()	0	static
+sources/app/submarine_game/sub_game_submarine.cpp:36:6:void sub_game_submarine_draw()	24	static

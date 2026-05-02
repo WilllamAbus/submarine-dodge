@@ -1,7 +1,9 @@
 include sources/app/screens/Makefile.mk
 
-CFLAGS		+= -I./sources/app
-CPPFLAGS	+= -I./sources/app
+VPATH += sources/app/submarine_game
+CFLAGS += -I./sources/app
+CPPFLAGS += -I./sources/app
+CPPFLAGS += -I./sources/app/submarine_game
 
 VPATH += sources/app
 
@@ -28,3 +30,9 @@ SOURCES_CPP += sources/app/task_if.cpp
 SOURCES_CPP += sources/app/task_rf24_if.cpp
 SOURCES_CPP += sources/app/task_uart_if.cpp
 SOURCES_CPP += sources/app/task_dbg.cpp
+# Submarine Dodge Game
+SOURCES_CPP += sources/app/submarine_game/sub_game_submarine.cpp
+SOURCES_CPP += sources/app/submarine_game/sub_game_torpedo.cpp
+SOURCES_CPP += sources/app/submarine_game/sub_game_obstacle.cpp
+SOURCES_CPP += sources/app/submarine_game/sub_game_bang.cpp
+SOURCES_CPP += sources/app/screens/scr_submarine_game.cpp
