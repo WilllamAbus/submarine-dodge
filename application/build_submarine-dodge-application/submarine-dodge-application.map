@@ -1640,13 +1640,30 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/scr_submarine_game.o
  .data          0x0000000000000000        0x0 build_submarine-dodge-application/scr_submarine_game.o
  .bss           0x0000000000000000        0x0 build_submarine-dodge-application/scr_submarine_game.o
- .debug_info    0x0000000000000000     0x22f4 build_submarine-dodge-application/scr_submarine_game.o
- .debug_abbrev  0x0000000000000000      0x378 build_submarine-dodge-application/scr_submarine_game.o
+ .rodata._Z25scr_submarine_game_handleP8ak_msg_t.str1.1
+                0x0000000000000000       0x88 build_submarine-dodge-application/scr_submarine_game.o
+ .text._Z25scr_submarine_game_handleP8ak_msg_t
+                0x0000000000000000       0xbc build_submarine-dodge-application/scr_submarine_game.o
+ .text._ZL23view_scr_submarine_gamev
+                0x0000000000000000       0x5c build_submarine-dodge-application/scr_submarine_game.o
+ .bss._ZL10game_state
+                0x0000000000000000        0x1 build_submarine-dodge-application/scr_submarine_game.o
+ .bss._ZL5score
+                0x0000000000000000        0x4 build_submarine-dodge-application/scr_submarine_game.o
+ .data.dyn_view_submarine_game
+                0x0000000000000000        0x8 build_submarine-dodge-application/scr_submarine_game.o
+ .data.scr_submarine_game
+                0x0000000000000000       0x10 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_info    0x0000000000000000     0x2858 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_abbrev  0x0000000000000000      0x494 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_loc     0x0000000000000000       0x99 build_submarine-dodge-application/scr_submarine_game.o
  .debug_aranges
-                0x0000000000000000       0x18 build_submarine-dodge-application/scr_submarine_game.o
- .debug_line    0x0000000000000000      0x434 build_submarine-dodge-application/scr_submarine_game.o
- .debug_str     0x0000000000000000     0x114a build_submarine-dodge-application/scr_submarine_game.o
+                0x0000000000000000       0x28 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_ranges  0x0000000000000000       0x18 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_line    0x0000000000000000      0x699 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_str     0x0000000000000000     0x1777 build_submarine-dodge-application/scr_submarine_game.o
  .comment       0x0000000000000000       0x4a build_submarine-dodge-application/scr_submarine_game.o
+ .debug_frame   0x0000000000000000       0x68 build_submarine-dodge-application/scr_submarine_game.o
  .ARM.attributes
                 0x0000000000000000       0x2d build_submarine-dodge-application/scr_submarine_game.o
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/view_item.o

@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "STM32",
+            "includePath": [
+                "${workspaceFolder}/application/sources/app",
+                "${workspaceFolder}/application/sources/app/screens",
+                "${workspaceFolder}/application/sources/app/submarine_game",
+                "${workspaceFolder}/application/sources/ak/inc",
+                "${workspaceFolder}/application/sources/ak/src",
+                "${workspaceFolder}/application/sources/sys",
+                "${workspaceFolder}/application/sources/common",
+                "${workspaceFolder}/application/sources/common/container",
+                "${workspaceFolder}/application/sources/driver/Adafruit_oled_drv",
+                "${workspaceFolder}/application/sources/driver/button",
+                "${workspaceFolder}/application/sources/driver/buzzer",
+                "${workspaceFolder}/application/sources/driver/led",
+                "${workspaceFolder}/application/sources/driver/flash",
+                "${workspaceFolder}/application/sources/driver/eeprom",
+                "${workspaceFolder}/application/sources/driver/gpio",
+                "${workspaceFolder}/application/sources/platform/stm32l",
+                "${workspaceFolder}/application/sources/platform/stm32l/Libraries/STM32L1xx_StdPeriph_Driver/inc",
+                "${workspaceFolder}/application/sources/platform/stm32l/Libraries/CMSIS/Device/ST/STM32L1xx/Include",
+                "${workspaceFolder}/application/sources/platform/stm32l/Libraries/CMSIS/Include",
+                "${workspaceFolder}/application/sources/platform/stm32l/arduino/cores/stm32",
+                "${workspaceFolder}/application/sources/platform/stm32l/arduino/libraries/Wire",
+                "${workspaceFolder}/application/sources/platform/stm32l/arduino/libraries/SPI",
+                "${workspaceFolder}/application/sources/libraries",
+                "${workspaceFolder}/application/sources/networks/net/link",
+                "${workspaceFolder}/application/sources/networks/mbmaster-v2.9.6/mbmaster/include",
+                "${workspaceFolder}/application/sources/networks/mbmaster-v2.9.6/demo/STM32/Port",
+                "${workspaceFolder}/application/sources/platform/stm32l/arduino/cores/stm32",
+                "${workspaceFolder}/application/sources/platform/stm32l/arduino/cores",
+                "${workspaceFolder}/application/sources/networks/mbmaster-v2.9.6/mbmaster/include/common"
+            ],
+            "defines": [
+                "STM32L1XX_MD",
+                "USE_STDPERIPH_DRIVER",
+                "SSD1309_DRIVER_EN",
+                "IF_LINK_UART_EN",
+                "TASK_MBMASTER_EN"
+            ],
+            "compilerPath": "/home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++",
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

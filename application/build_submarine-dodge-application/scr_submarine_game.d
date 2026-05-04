@@ -1,7 +1,6 @@
 build_submarine-dodge-application/scr_submarine_game.o: \
  sources/app/screens/scr_submarine_game.cpp \
- sources/app/screens/scr_submarine_game.h \
- sources/app/submarine_game/sub_game_submarine.h sources/ak/inc/fsm.h \
+ sources/app/screens/scr_submarine_game.h sources/ak/inc/fsm.h \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/stdint.h \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
@@ -156,4 +155,9 @@ build_submarine-dodge-application/scr_submarine_game.o: \
  sources/app/screens/scr_es35sw_th_sensor.h sources/app/app_modbus_pull.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbtypes.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbportlayer.h \
- sources/app/screens/scr_lhio404_io_device.h
+ sources/app/screens/scr_lhio404_io_device.h \
+ sources/app/submarine_game/sub_game_submarine.h \
+ sources/app/submarine_game/sub_game_torpedo.h \
+ sources/app/submarine_game/sub_game_submarine.h \
+ sources/app/submarine_game/sub_game_obstacle.h \
+ sources/app/submarine_game/sub_game_bang.h
