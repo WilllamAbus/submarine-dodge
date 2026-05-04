@@ -1,0 +1,4 @@
+sources/app/submarine_game/sub_game_bang.cpp:17:6:void sub_game_bang_setup()	0	static
+sources/app/submarine_game/sub_game_bang.cpp:24:6:void sub_game_bang_spawn(int8_t, int8_t)	12	static
+sources/app/submarine_game/sub_game_bang.cpp:35:6:void sub_game_bang_update()	0	static
+sources/app/submarine_game/sub_game_bang.cpp:45:6:void sub_game_bang_draw()	40	static

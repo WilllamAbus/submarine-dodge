@@ -1,0 +1,5 @@
+sources/app/submarine_game/sub_game_obstacle.cpp:11:6:void sub_game_obstacle_setup()	0	static
+sources/app/submarine_game/sub_game_obstacle.cpp:17:6:void sub_game_obstacle_spawn(uint8_t)	24	static
+sources/app/submarine_game/sub_game_obstacle.cpp:37:6:void sub_game_obstacle_update()	8	static
+sources/app/submarine_game/sub_game_obstacle.cpp:51:6:void sub_game_obstacle_draw()	40	static
+sources/app/submarine_game/sub_game_obstacle.cpp:66:9:uint8_t sub_game_obstacle_hit_submarine()	20	static

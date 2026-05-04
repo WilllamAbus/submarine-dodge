@@ -1,0 +1,4 @@
+sources/app/submarine_game/sub_game_torpedo.cpp:10:6:void sub_game_torpedo_setup()	0	static
+sources/app/submarine_game/sub_game_torpedo.cpp:16:6:void sub_game_torpedo_update()	8	static
+sources/app/submarine_game/sub_game_torpedo.cpp:29:6:void sub_game_torpedo_draw()	40	static
+sources/app/submarine_game/sub_game_torpedo.cpp:44:9:uint8_t sub_game_torpedo_hit(int8_t, int8_t, uint8_t, uint8_t)	20	static

@@ -1604,37 +1604,83 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_torpedo.o
  .data          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_torpedo.o
  .bss           0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_torpedo.o
- .debug_info    0x0000000000000000     0x22f4 build_submarine-dodge-application/sub_game_torpedo.o
- .debug_abbrev  0x0000000000000000      0x378 build_submarine-dodge-application/sub_game_torpedo.o
+ .text._Z22sub_game_torpedo_setupv
+                0x0000000000000000       0x10 build_submarine-dodge-application/sub_game_torpedo.o
+ .text._Z23sub_game_torpedo_updatev
+                0x0000000000000000       0x30 build_submarine-dodge-application/sub_game_torpedo.o
+ .text._Z21sub_game_torpedo_drawv
+                0x0000000000000000       0x4c build_submarine-dodge-application/sub_game_torpedo.o
+ .text._Z20sub_game_torpedo_hitaahh
+                0x0000000000000000       0x4c build_submarine-dodge-application/sub_game_torpedo.o
+ .bss.torpedoes
+                0x0000000000000000        0xc build_submarine-dodge-application/sub_game_torpedo.o
+ .rodata._ZL14torpedo_bitmap
+                0x0000000000000000        0x3 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_info    0x0000000000000000     0x2509 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_abbrev  0x0000000000000000      0x461 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_loc     0x0000000000000000      0x16f build_submarine-dodge-application/sub_game_torpedo.o
  .debug_aranges
-                0x0000000000000000       0x18 build_submarine-dodge-application/sub_game_torpedo.o
- .debug_line    0x0000000000000000      0x434 build_submarine-dodge-application/sub_game_torpedo.o
- .debug_str     0x0000000000000000     0x114f build_submarine-dodge-application/sub_game_torpedo.o
+                0x0000000000000000       0x38 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_ranges  0x0000000000000000       0x80 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_line    0x0000000000000000      0x600 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_str     0x0000000000000000     0x127d build_submarine-dodge-application/sub_game_torpedo.o
  .comment       0x0000000000000000       0x4a build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_frame   0x0000000000000000       0x7c build_submarine-dodge-application/sub_game_torpedo.o
  .ARM.attributes
                 0x0000000000000000       0x2d build_submarine-dodge-application/sub_game_torpedo.o
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_obstacle.o
  .data          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_obstacle.o
  .bss           0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_obstacle.o
- .debug_info    0x0000000000000000     0x22f4 build_submarine-dodge-application/sub_game_obstacle.o
- .debug_abbrev  0x0000000000000000      0x378 build_submarine-dodge-application/sub_game_obstacle.o
+ .text._Z23sub_game_obstacle_setupv
+                0x0000000000000000       0x14 build_submarine-dodge-application/sub_game_obstacle.o
+ .text._Z23sub_game_obstacle_spawnh
+                0x0000000000000000       0x54 build_submarine-dodge-application/sub_game_obstacle.o
+ .text._Z24sub_game_obstacle_updatev
+                0x0000000000000000       0x34 build_submarine-dodge-application/sub_game_obstacle.o
+ .text._Z22sub_game_obstacle_drawv
+                0x0000000000000000       0x48 build_submarine-dodge-application/sub_game_obstacle.o
+ .text._Z31sub_game_obstacle_hit_submarinev
+                0x0000000000000000       0x5c build_submarine-dodge-application/sub_game_obstacle.o
+ .bss.obstacles
+                0x0000000000000000       0x10 build_submarine-dodge-application/sub_game_obstacle.o
+ .rodata._ZL15obstacle_bitmap
+                0x0000000000000000        0x8 build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_info    0x0000000000000000     0x2560 build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_abbrev  0x0000000000000000      0x45b build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_loc     0x0000000000000000      0x172 build_submarine-dodge-application/sub_game_obstacle.o
  .debug_aranges
-                0x0000000000000000       0x18 build_submarine-dodge-application/sub_game_obstacle.o
- .debug_line    0x0000000000000000      0x434 build_submarine-dodge-application/sub_game_obstacle.o
- .debug_str     0x0000000000000000     0x1150 build_submarine-dodge-application/sub_game_obstacle.o
+                0x0000000000000000       0x40 build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_ranges  0x0000000000000000       0xa8 build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_line    0x0000000000000000      0x6c2 build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_str     0x0000000000000000     0x1308 build_submarine-dodge-application/sub_game_obstacle.o
  .comment       0x0000000000000000       0x4a build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_frame   0x0000000000000000       0x9c build_submarine-dodge-application/sub_game_obstacle.o
  .ARM.attributes
                 0x0000000000000000       0x2d build_submarine-dodge-application/sub_game_obstacle.o
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_bang.o
  .data          0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_bang.o
  .bss           0x0000000000000000        0x0 build_submarine-dodge-application/sub_game_bang.o
- .debug_info    0x0000000000000000     0x22f4 build_submarine-dodge-application/sub_game_bang.o
- .debug_abbrev  0x0000000000000000      0x378 build_submarine-dodge-application/sub_game_bang.o
- .debug_aranges
+ .text._Z19sub_game_bang_setupv
                 0x0000000000000000       0x18 build_submarine-dodge-application/sub_game_bang.o
- .debug_line    0x0000000000000000      0x434 build_submarine-dodge-application/sub_game_bang.o
- .debug_str     0x0000000000000000     0x114c build_submarine-dodge-application/sub_game_bang.o
+ .text._Z19sub_game_bang_spawnaa
+                0x0000000000000000       0x30 build_submarine-dodge-application/sub_game_bang.o
+ .text._Z20sub_game_bang_updatev
+                0x0000000000000000       0x24 build_submarine-dodge-application/sub_game_bang.o
+ .text._Z18sub_game_bang_drawv
+                0x0000000000000000       0x48 build_submarine-dodge-application/sub_game_bang.o
+ .bss.bangs     0x0000000000000000        0xc build_submarine-dodge-application/sub_game_bang.o
+ .rodata._ZL11bang_bitmap
+                0x0000000000000000       0x20 build_submarine-dodge-application/sub_game_bang.o
+ .debug_info    0x0000000000000000     0x24db build_submarine-dodge-application/sub_game_bang.o
+ .debug_abbrev  0x0000000000000000      0x42f build_submarine-dodge-application/sub_game_bang.o
+ .debug_loc     0x0000000000000000       0xe4 build_submarine-dodge-application/sub_game_bang.o
+ .debug_aranges
+                0x0000000000000000       0x38 build_submarine-dodge-application/sub_game_bang.o
+ .debug_ranges  0x0000000000000000       0x78 build_submarine-dodge-application/sub_game_bang.o
+ .debug_line    0x0000000000000000      0x5e7 build_submarine-dodge-application/sub_game_bang.o
+ .debug_str     0x0000000000000000     0x125d build_submarine-dodge-application/sub_game_bang.o
  .comment       0x0000000000000000       0x4a build_submarine-dodge-application/sub_game_bang.o
+ .debug_frame   0x0000000000000000       0x70 build_submarine-dodge-application/sub_game_bang.o
  .ARM.attributes
                 0x0000000000000000       0x2d build_submarine-dodge-application/sub_game_bang.o
  .text          0x0000000000000000        0x0 build_submarine-dodge-application/scr_submarine_game.o
