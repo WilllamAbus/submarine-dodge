@@ -1,5 +1,5 @@
 #include "scr_idle.h"
-
+#include "scr_submarine_game.h"
 using namespace std;
 
 #define MAX_BALL_DISPLAY	(16)
@@ -120,7 +120,7 @@ void scr_idle_handle(ak_msg_t* msg) {
 	case AC_DISPLAY_BUTON_MODE_RELEASED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
-		SCREEN_TRAN(scr_es35sw_th_sensor_handle, &scr_es35sw_th_sensor);
+		SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
 	}
 		break;
 
@@ -154,7 +154,7 @@ void scr_idle_handle(ak_msg_t* msg) {
 
 		if (v_idle_ball.empty()) {
 			timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
-			SCREEN_TRAN(scr_es35sw_th_sensor_handle, &scr_es35sw_th_sensor);
+			SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
 		}
 	}
 		break;
