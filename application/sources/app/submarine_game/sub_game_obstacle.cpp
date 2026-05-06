@@ -77,3 +77,35 @@ uint8_t sub_game_obstacle_hit_submarine() {
     }
     return 0;
 }
+
+
+void sub_game_obstacle_handle(ak_msg_t* msg) {
+    switch (msg->sig) {
+    case SB_GAME_OBSTACLE_SETUP: {
+        sub_game_obstacle_setup();
+    }
+    break;
+
+    case SB_GAME_OBSTACLE_RUN: {
+        sub_game_obstacle_update();
+        /* Spawn tự động xen kẽ 2 chiều */
+        static uint8_t spawn_tick = 0;
+        static uint8_t from_right = 1;
+        spawn_tick++;
+        if (spawn_tick >= 5) {
+            spawn_tick = 0;
+            sub_game_obstacle_spawn(from_right);
+            from_right = !from_right;  /* Xen kẽ trái/phải */
+        }
+    }
+    break;
+
+    case SB_GAME_OBSTACLE_RESET: {
+        sub_game_obstacle_setup();
+    }
+    break;
+
+    default:
+        break;
+    }
+}

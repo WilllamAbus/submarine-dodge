@@ -43,3 +43,29 @@ void sub_game_submarine_draw() {
         WHITE
     );
 }
+
+
+void sub_game_submarine_handle(ak_msg_t* msg) {
+    switch (msg->sig) {
+    case SB_GAME_SUBMARINE_SETUP: {
+        APP_DBG_SIG("SB_GAME_SUBMARINE_SETUP\n");
+        sub_game_submarine_setup();
+    }
+    break;
+
+    case SB_GAME_SUBMARINE_UP: {
+        APP_DBG_SIG("SB_GAME_SUBMARINE_UP\n");
+        sub_game_submarine_up();
+    }
+    break;
+
+    case SB_GAME_SUBMARINE_DOWN: {
+        APP_DBG_SIG("SB_GAME_SUBMARINE_DOWN\n");
+        sub_game_submarine_down();
+    }
+    break;
+
+    default:
+        break;
+    }
+}

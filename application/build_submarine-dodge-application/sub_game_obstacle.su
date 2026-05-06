@@ -3,3 +3,4 @@ sources/app/submarine_game/sub_game_obstacle.cpp:17:6:void sub_game_obstacle_spa
 sources/app/submarine_game/sub_game_obstacle.cpp:37:6:void sub_game_obstacle_update()	8	static
 sources/app/submarine_game/sub_game_obstacle.cpp:51:6:void sub_game_obstacle_draw()	40	static
 sources/app/submarine_game/sub_game_obstacle.cpp:66:9:uint8_t sub_game_obstacle_hit_submarine()	20	static
+sources/app/submarine_game/sub_game_obstacle.cpp:82:6:void sub_game_obstacle_handle(ak_msg_t*)	8	static

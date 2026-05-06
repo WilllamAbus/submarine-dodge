@@ -43,5 +43,6 @@ void sub_game_submarine_up();
 void sub_game_submarine_down();
 void sub_game_submarine_reset();
 void sub_game_submarine_draw();
+void sub_game_submarine_handle(ak_msg_t* msg);
 
 #endif /* __SUB_GAME_SUBMARINE_H__ */

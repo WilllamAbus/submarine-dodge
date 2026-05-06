@@ -1,5 +1,10 @@
 #include "task_list.h"
 #include "timer.h"
+#include "scr_submarine_game.h"
+#include "sub_game_submarine.h"
+#include "sub_game_torpedo.h"
+#include "sub_game_obstacle.h"
+#include "sub_game_bang.h"
 
 const task_t app_task_table[] = {
 	/*************************************************************************/
@@ -19,6 +24,14 @@ const task_t app_task_table[] = {
 	{AC_TASK_UART_IF_ID			,	TASK_PRI_LEVEL_4	,	task_uart_if		},
 	{AC_TASK_DBG_ID				,	TASK_PRI_LEVEL_4	,	task_dbg			},
 	{AC_TASK_DISPLAY_ID			,	TASK_PRI_LEVEL_4	,	task_display		},
+/**************************************************************/
+/* SUBMARINE GAME */
+/**************************************************************/
+{SB_GAME_SUBMARINE_ID, TASK_PRI_LEVEL_4, sub_game_submarine_handle},
+{SB_GAME_TORPEDO_ID,   TASK_PRI_LEVEL_4, sub_game_torpedo_handle  },
+{SB_GAME_OBSTACLE_ID,  TASK_PRI_LEVEL_4, sub_game_obstacle_handle },
+{SB_GAME_BANG_ID,      TASK_PRI_LEVEL_4, sub_game_bang_handle     },
+{SB_GAME_SCREEN_ID,    TASK_PRI_LEVEL_4, scr_submarine_game_handle},
 
 	#if defined(TASK_ZIGBEE_EN)
 	{AC_TASK_ZIGBEE_ID			,	TASK_PRI_LEVEL_4	,	task_zigbee			},

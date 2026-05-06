@@ -1,7 +1,6 @@
 #include "scr_submarine_game.h"
 
-#define SUB_GAME_UPDATE_INTERVAL    (150)
-#define SUB_GAME_SPAWN_INTERVAL     (5)  /* Spawn mỗi 5 tick */
+#define SB_GAME_SPAWN_INTERVAL  (5)
 
 typedef enum {
     GAME_STATE_PLAYING,
@@ -9,16 +8,13 @@ typedef enum {
 } game_state_t;
 
 static game_state_t game_state;
-static uint32_t score;
-static uint8_t spawn_counter;
+uint32_t sb_game_score;
 
 /* ==================== VIEW ==================== */
 static void view_scr_submarine_game();
 
 view_dynamic_t dyn_view_submarine_game = {
-    {
-        .item_type = ITEM_TYPE_DYNAMIC,
-    },
+    { .item_type = ITEM_TYPE_DYNAMIC },
     view_scr_submarine_game
 };
 
@@ -30,32 +26,28 @@ view_screen_t scr_submarine_game = {
 };
 
 static void view_scr_submarine_game() {
-    /* Border */
     view_render.drawFastHLine(0, 0, LCD_WIDTH, WHITE);
     view_render.drawFastHLine(0, LCD_HEIGHT - 1, LCD_WIDTH, WHITE);
 
     if (game_state == GAME_STATE_PLAYING) {
         sub_game_submarine_draw();
+        sub_game_torpedo_draw();
         sub_game_obstacle_draw();
         sub_game_bang_draw();
 
-        /* Score */
         view_render.setCursor(85, 2);
         view_render.setTextSize(1);
         view_render.setTextColor(WHITE);
-        view_render.print(score);
+        view_render.print(sb_game_score);
 
     } else {
-        /* Game Over screen */
         view_render.setCursor(30, 20);
         view_render.setTextSize(1);
         view_render.setTextColor(WHITE);
         view_render.print("GAME OVER");
-
         view_render.setCursor(25, 35);
         view_render.print("Score: ");
-        view_render.print(score);
-
+        view_render.print(sb_game_score);
         view_render.setCursor(15, 50);
         view_render.print("MODE to restart");
     }
@@ -67,73 +59,79 @@ void scr_submarine_game_handle(ak_msg_t* msg) {
 
     case SCREEN_ENTRY: {
         APP_DBG_SIG("SCREEN_ENTRY\n");
-        game_state    = GAME_STATE_PLAYING;
-        score         = 0;
-        spawn_counter = 0;
+        game_state   = GAME_STATE_PLAYING;
+        sb_game_score = 0;
 
-        sub_game_submarine_setup();
-        sub_game_obstacle_setup();
-        sub_game_bang_setup();
+        /* Setup tất cả object */
+        task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_SETUP);
+        task_post_pure_msg(SB_GAME_TORPEDO_ID,   SB_GAME_TORPEDO_SETUP);
+        task_post_pure_msg(SB_GAME_OBSTACLE_ID,  SB_GAME_OBSTACLE_SETUP);
+        task_post_pure_msg(SB_GAME_BANG_ID,      SB_GAME_BANG_SETUP);
 
+        /* Bắt đầu timer game loop */
         timer_set(AC_TASK_DISPLAY_ID,
-                  AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE,
-                  SUB_GAME_UPDATE_INTERVAL,
+                  SB_GAME_TIME_TICK,
+                  SB_GAME_TIME_TICK_INTERVAL,
                   TIMER_PERIODIC);
     }
     break;
 
-    case AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE: {
+    case SB_GAME_TIME_TICK: {
         if (game_state != GAME_STATE_PLAYING) break;
 
-        score++;
+        sb_game_score++;
 
-        /* Spawn obstacle */
-        spawn_counter++;
-        if (spawn_counter >= SUB_GAME_SPAWN_INTERVAL) {
-            spawn_counter = 0;
-            /* Xen kẽ spawn từ trái và phải */
-            sub_game_obstacle_spawn(score % 2);
+        /* Update tất cả object */
+        task_post_pure_msg(SB_GAME_TORPEDO_ID,  SB_GAME_TORPEDO_RUN);
+        task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_RUN);
+        task_post_pure_msg(SB_GAME_BANG_ID,     SB_GAME_BANG_UPDATE);
+
+        /* Kiểm tra torpedo bắn trúng obstacle */
+        for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
+            if (!obstacles[i].active) continue;
+            if (sub_game_torpedo_hit(obstacles[i].x,
+                                     obstacles[i].y,
+                                     OBSTACLE_WIDTH,
+                                     OBSTACLE_HEIGHT)) {
+                obstacles[i].active = 0;
+                sub_game_bang_spawn(obstacles[i].x, obstacles[i].y);
+                sb_game_score += 10;
+            }
         }
 
-        /* Update vị trí */
-        sub_game_obstacle_update();
-        sub_game_bang_update();
-
-        /* Kiểm tra va chạm */
+        /* Kiểm tra obstacle chạm tàu */
         if (sub_game_obstacle_hit_submarine()) {
             sub_game_bang_spawn(submarine.x, submarine.y);
             BUZZER_PlayTones(tones_3beep);
             game_state = GAME_STATE_OVER;
-            timer_remove_attr(AC_TASK_DISPLAY_ID,
-                              AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
+            timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
         }
     }
     break;
 
     case AC_DISPLAY_BUTON_UP_RELEASED: {
         if (game_state == GAME_STATE_PLAYING) {
-            sub_game_submarine_up();
+            task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_UP);
         }
     }
     break;
 
     case AC_DISPLAY_BUTON_DOWN_RELEASED: {
         if (game_state == GAME_STATE_PLAYING) {
-            sub_game_submarine_down();
+            task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_DOWN);
         }
     }
     break;
 
     case AC_DISPLAY_BUTON_MODE_RELEASED: {
         APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
-        timer_remove_attr(AC_TASK_DISPLAY_ID,
-                          AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
-        if (game_state == GAME_STATE_OVER) {
-            /* Restart game */
-            SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
+        if (game_state == GAME_STATE_PLAYING) {
+            /* Bắn torpedo */
+            task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_SHOOT);
         } else {
-            /* Thoát về idle */
-            SCREEN_TRAN(scr_idle_handle, &scr_idle);
+            /* Restart game */
+            timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
+            SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
         }
     }
     break;

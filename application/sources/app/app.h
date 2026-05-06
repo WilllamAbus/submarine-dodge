@@ -157,6 +157,34 @@ enum {
 	AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP
 };
 
+
+
+
+/*****************************************************************************/
+/*  SUBMARINE GAME task define
+ */
+/*****************************************************************************/
+#define SB_GAME_TIME_TICK_INTERVAL    (150)
+
+enum {
+	SB_GAME_TIME_TICK = AK_USER_DEFINE_SIG,
+	SB_GAME_SUBMARINE_SETUP,
+	SB_GAME_SUBMARINE_UP,
+	SB_GAME_SUBMARINE_DOWN,
+	SB_GAME_TORPEDO_SETUP,
+	SB_GAME_TORPEDO_SHOOT,
+	SB_GAME_TORPEDO_RUN,
+	SB_GAME_TORPEDO_RESET,
+	SB_GAME_OBSTACLE_SETUP,
+	SB_GAME_OBSTACLE_RUN,
+	SB_GAME_OBSTACLE_RESET,
+	SB_GAME_BANG_SETUP,
+	SB_GAME_BANG_UPDATE,
+	SB_GAME_BANG_RESET,
+	SB_GAME_RESET,
+	SB_GAME_OVER,
+};
+
 /*****************************************************************************/
 /*  ZIGBEE task define
  */

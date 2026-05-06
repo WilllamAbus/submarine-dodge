@@ -55,3 +55,26 @@ void sub_game_bang_draw() {
         );
     }
 }
+
+
+void sub_game_bang_handle(ak_msg_t* msg) {
+    switch (msg->sig) {
+    case SB_GAME_BANG_SETUP: {
+        sub_game_bang_setup();
+    }
+    break;
+
+    case SB_GAME_BANG_UPDATE: {
+        sub_game_bang_update();
+    }
+    break;
+
+    case SB_GAME_BANG_RESET: {
+        sub_game_bang_setup();
+    }
+    break;
+
+    default:
+        break;
+    }
+}

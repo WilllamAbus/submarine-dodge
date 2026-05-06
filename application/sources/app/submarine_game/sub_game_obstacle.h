@@ -22,5 +22,5 @@ void sub_game_obstacle_spawn(uint8_t from_right);
 void sub_game_obstacle_update();
 void sub_game_obstacle_draw();
 uint8_t sub_game_obstacle_hit_submarine();
-
+void sub_game_obstacle_handle(ak_msg_t* msg);
 #endif /* __SUB_GAME_OBSTACLE_H__ */

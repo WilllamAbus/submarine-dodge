@@ -55,3 +55,44 @@ uint8_t sub_game_torpedo_hit(int8_t x, int8_t y, uint8_t w, uint8_t h) {
     }
     return 0;
 }
+
+
+void sub_game_torpedo_handle(ak_msg_t* msg) {
+    switch (msg->sig) {
+    case SB_GAME_TORPEDO_SETUP: {
+        APP_DBG_SIG("SB_GAME_TORPEDO_SETUP\n");
+        sub_game_torpedo_setup();
+    }
+    break;
+
+    case SB_GAME_TORPEDO_SHOOT: {
+        APP_DBG_SIG("SB_GAME_TORPEDO_SHOOT\n");
+        /* Bắn từ vị trí tàu ngầm */
+        for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
+            if (torpedoes[i].active) continue;
+            torpedoes[i].active = 1;
+            torpedoes[i].x     = submarine.x + SUBMARINE_WIDTH;
+            torpedoes[i].y     = submarine.y + SUBMARINE_HEIGHT / 2;
+            torpedoes[i].dir   = +1;  /* Bay sang phải */
+            BUZZER_PlayTones(tones_3beep);     
+            break;
+        }
+    }
+    break;
+
+    case SB_GAME_TORPEDO_RUN: {
+        APP_DBG_SIG("SB_GAME_TORPEDO_RUN\n");
+        sub_game_torpedo_update();
+    }
+    break;
+
+    case SB_GAME_TORPEDO_RESET: {
+        APP_DBG_SIG("SB_GAME_TORPEDO_RESET\n");
+        sub_game_torpedo_setup();
+    }
+    break;
+
+    default:
+        break;
+    }
+}
