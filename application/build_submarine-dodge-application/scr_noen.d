@@ -150,8 +150,8 @@ build_submarine-dodge-application/scr_noen.o: \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/concepts \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc \
- sources/app/screens/scr_info.h sources/app/screens/scr_startup.h \
- sources/app/screens/scr_noen.h \
+ sources/app/screens/scr_main_menu.h sources/app/screens/scr_info.h \
+ sources/app/screens/scr_startup.h sources/app/screens/scr_noen.h \
  sources/app/screens/scr_es35sw_th_sensor.h sources/app/app_modbus_pull.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbtypes.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbportlayer.h \

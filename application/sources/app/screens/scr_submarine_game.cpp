@@ -131,7 +131,7 @@ void scr_submarine_game_handle(ak_msg_t* msg) {
         } else {
             /* Restart game */
             timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
-            SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
+            SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
         }
     }
     break;

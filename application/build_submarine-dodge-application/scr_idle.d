@@ -156,6 +156,7 @@ build_submarine-dodge-application/scr_idle.o: \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/concepts \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/range_cmp.h \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc \
+ sources/app/screens/scr_main_menu.h \
  sources/app/screens/scr_submarine_game.h \
  sources/app/submarine_game/sub_game_submarine.h \
  sources/app/submarine_game/sub_game_torpedo.h \

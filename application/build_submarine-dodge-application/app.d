@@ -223,8 +223,9 @@ build_submarine-dodge-application/app.o: sources/app/app.cpp \
  /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/inttypes.h \
  sources/app/screens/scr_idle.h sources/app/app.h sources/app/app_dbg.h \
  sources/app/task_list.h sources/app/task_display.h \
- sources/common/view_render.h sources/app/screens/scr_info.h \
- sources/app/screens/scr_startup.h sources/app/screens/scr_noen.h \
+ sources/common/view_render.h sources/app/screens/scr_main_menu.h \
+ sources/app/screens/scr_info.h sources/app/screens/scr_startup.h \
+ sources/app/screens/scr_noen.h \
  sources/app/screens/scr_es35sw_th_sensor.h sources/app/app_modbus_pull.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbtypes.h \
  sources/networks/mbmaster-v2.9.6/mbmaster/include/common/mbportlayer.h \
