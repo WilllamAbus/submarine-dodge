@@ -25,10 +25,36 @@ view_screen_t scr_submarine_game = {
     .focus_item = 0,
 };
 
+static void draw_water_environment() {
+    /* Vẽ mặt nước phía trên */
+    view_render.drawFastHLine(0, 8, LCD_WIDTH, WHITE);
+    
+    /* Vẽ sóng nước */
+    for (uint8_t x = 0; x < LCD_WIDTH; x += 8) {
+        view_render.drawPixel(x + 2, 6, WHITE);
+        view_render.drawPixel(x + 4, 5, WHITE);
+        view_render.drawPixel(x + 6, 6, WHITE);
+    }
+    
+    /* Vẽ bong bóng */
+    static uint8_t bubble_y = 50;
+    bubble_y--;
+    if (bubble_y < 10) bubble_y = 55;
+    view_render.drawPixel(20, bubble_y, WHITE);
+    view_render.drawPixel(60, bubble_y + 5, WHITE);
+    view_render.drawPixel(100, bubble_y - 3, WHITE);
+    
+    /* Vẽ đáy biển */
+    view_render.drawFastHLine(0, LCD_HEIGHT - 8, LCD_WIDTH, WHITE);
+    for (uint8_t x = 0; x < LCD_WIDTH; x += 6) {
+        view_render.drawPixel(x + 1, LCD_HEIGHT - 7, WHITE);
+        view_render.drawPixel(x + 3, LCD_HEIGHT - 6, WHITE);
+    }
+}
 static void view_scr_submarine_game() {
     view_render.drawFastHLine(0, 0, LCD_WIDTH, WHITE);
     view_render.drawFastHLine(0, LCD_HEIGHT - 1, LCD_WIDTH, WHITE);
-
+       draw_water_environment();
     if (game_state == GAME_STATE_PLAYING) {
         sub_game_submarine_draw();
         sub_game_torpedo_draw();

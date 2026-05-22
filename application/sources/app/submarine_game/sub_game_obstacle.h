@@ -3,7 +3,7 @@
 
 #include "sub_game_submarine.h"
 
-#define OBSTACLE_WIDTH      8
+#define OBSTACLE_WIDTH      16   /* tăng từ 8 lên 16 */
 #define OBSTACLE_HEIGHT     8
 #define OBSTACLE_SPEED      2
 #define OBSTACLE_MAX        4    /* Tối đa 4 chướng ngại vật */

@@ -4,8 +4,14 @@ obstacle_t obstacles[OBSTACLE_MAX];
 
 /* Bitmap chướng ngại vật 8x8 (hình mìn) */
 static const uint8_t obstacle_bitmap[] = {
-    0x18, 0x3C, 0x7E, 0xFF,
-    0xFF, 0x7E, 0x3C, 0x18
+    0x00, 0x00,  /* ........ ........ */
+    0x00, 0x60,  /* ........ .XX..... */  /* kính địch bên phải */
+    0x1F, 0xF8,  /* ...XXXXX XXXXX... */  /* thân trên */
+    0x7F, 0xFE,  /* .XXXXXXX XXXXXXX. */  /* thân giữa */
+    0xFF, 0xFF,  /* XXXXXXXX XXXXXXXX */  /* thân chính */
+    0x7F, 0xFE,  /* .XXXXXXX XXXXXXX. */  /* cánh */
+    0x1F, 0xF8,  /* ...XXXXX XXXXX... */  /* đuôi */
+    0x00, 0x00,  /* ........ ........ */
 };
 
 void sub_game_obstacle_setup() {
