@@ -141,22 +141,15 @@ void scr_submarine_game_handle(ak_msg_t *msg)
             }
         }
 
-        /* Kiểm tra đạn địch trúng tàu player , va cham tau ngam  */
-        if (sub_game_enemy_bullet_hit_submarine() )
+        /* Kiểm tra đạn địch trúng tàu player , */
+        if (sub_game_enemy_bullet_hit_submarine() && sub_game_obstacle_hit_submarine())
         {
             sub_game_bang_spawn(submarine.x, submarine.y);
             BUZZER_PlayTones(tones_3beep);
             game_state = GAME_STATE_OVER;
             timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
         }
-        /* Kiểm tra va chạm tàu ngầm */
-        if (sub_game_obstacle_hit_submarine())
-        {
-            sub_game_bang_spawn(submarine.x, submarine.y);
-            BUZZER_PlayTones(tones_3beep);
-            game_state = GAME_STATE_OVER;
-            timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
-        }
+  
     }
     break;
 
