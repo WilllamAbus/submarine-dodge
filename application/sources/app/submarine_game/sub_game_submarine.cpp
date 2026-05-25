@@ -14,7 +14,8 @@ static const uint8_t submarine_bitmap[] = {
 
 /* Biến toàn cục */
 submarine_t submarine;
-
+static int8_t auto_move_dir = 1;
+static uint8_t auto_move_tick = 0;
 void sub_game_submarine_setup() {
     submarine.x = SUBMARINE_X;
     submarine.y = (SUBMARINE_Y_MAX - SUBMARINE_Y_MIN) / 2;
@@ -68,7 +69,21 @@ void sub_game_submarine_handle(ak_msg_t* msg) {
         sub_game_submarine_down();
     }
     break;
-
+case SB_GAME_SUBMARINE_UPDATE: {
+    /* Di chuyển tự động nhẹ */
+    auto_move_tick++;
+    if (auto_move_tick >= 10) {
+        auto_move_tick = 0;
+        submarine.y += auto_move_dir;
+        if (submarine.y >= SUBMARINE_Y_MAX - SUBMARINE_HEIGHT - 2) {
+            auto_move_dir = -1;
+        }
+        if (submarine.y <= SUBMARINE_Y_MIN + 2) {
+            auto_move_dir = 1;
+        }
+    }
+}
+break;
     default:
         break;
     }

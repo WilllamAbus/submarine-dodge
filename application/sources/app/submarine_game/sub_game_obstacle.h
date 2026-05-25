@@ -8,6 +8,21 @@
 #define OBSTACLE_SPEED      2
 #define OBSTACLE_MAX        4    /* Tối đa 4 chướng ngại vật */
 
+
+#define ENEMY_BULLET_MAX    4
+#define ENEMY_BULLET_SPEED  3
+
+typedef struct {
+    int8_t x;
+    int8_t y;
+    uint8_t active;
+} enemy_bullet_t;
+
+extern enemy_bullet_t enemy_bullets[ENEMY_BULLET_MAX];
+
+void sub_game_obstacle_draw_bullets();
+uint8_t sub_game_enemy_bullet_hit_submarine();
+
 typedef struct {
     int8_t x;
     int8_t y;

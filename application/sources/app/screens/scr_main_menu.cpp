@@ -29,7 +29,7 @@ static void view_scr_main_menu() {
     view_render.setTextSize(1);
     view_render.setTextColor(WHITE);
     view_render.setCursor(20, 2);
-    view_render.print("== GAME MENU ==");
+    view_render.print("GAME MENU");
     view_render.drawFastHLine(0, 12, LCD_WIDTH, WHITE);
 
     /* Danh sách game */
@@ -54,7 +54,7 @@ static void view_scr_main_menu() {
     view_render.setTextColor(WHITE);
     view_render.setTextSize(1);
     view_render.setCursor(2, 56);
-    view_render.print("UP/DN:chon MODE:vao");
+    view_render.print("UP/DN:go MODE:start");
 }
 
 /* ==================== HANDLER ==================== */

@@ -66,6 +66,7 @@ static void view_scr_submarine_game()
         sub_game_torpedo_draw();
         sub_game_obstacle_draw();
         sub_game_bang_draw();
+        sub_game_obstacle_draw_bullets();
 
         view_render.setCursor(85, 2);
         view_render.setTextSize(1);
@@ -123,7 +124,7 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_RUN);
         task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_RUN);
         task_post_pure_msg(SB_GAME_BANG_ID, SB_GAME_BANG_UPDATE);
-
+        task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_UPDATE);
         /* +10 điểm: torpedo bắn trúng obstacle */
         for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
         {
@@ -140,25 +141,22 @@ void scr_submarine_game_handle(ak_msg_t *msg)
             }
         }
 
-        /* +5 điểm: obstacle né được (ra khỏi màn hình) */
-        for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-        {
-            if (!obstacles[i].active)
-                continue;
-            if (obstacles[i].x > LCD_WIDTH || obstacles[i].x < -OBSTACLE_WIDTH)
-            {
-                sb_game_score += 5;
-            }
-        }
-
-        /* Kiểm tra va chạm tàu ngầm */
-        if (sub_game_obstacle_hit_submarine())
+        /* Kiểm tra đạn địch trúng tàu player , va cham tau ngam  */
+        if (sub_game_enemy_bullet_hit_submarine() || sub_game_obstacle_hit_submarine())
         {
             sub_game_bang_spawn(submarine.x, submarine.y);
             BUZZER_PlayTones(tones_3beep);
             game_state = GAME_STATE_OVER;
             timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
         }
+        /* Kiểm tra va chạm tàu ngầm */
+        // if (sub_game_obstacle_hit_submarine())
+        // {
+        //     sub_game_bang_spawn(submarine.x, submarine.y);
+        //     BUZZER_PlayTones(tones_3beep);
+        //     game_state = GAME_STATE_OVER;
+        //     timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
+        // }
     }
     break;
 
