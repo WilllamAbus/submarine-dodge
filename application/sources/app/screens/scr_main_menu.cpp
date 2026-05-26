@@ -4,7 +4,7 @@
 /* ==================== MENU DATA ==================== */
 static const char* menu_items_name[NUMBER_MENU_ITEMS] = {
     " Submarine Dodge",
-    " Brick Breaker  ",
+
 };
 
 static uint8_t menu_selected = 0;  /* Item đang chọn */
