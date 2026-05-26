@@ -49,9 +49,10 @@ static void view_scr_main_menu() {
 
     /* Hướng dẫn */
     view_render.drawFastHLine(0, 54, LCD_WIDTH, WHITE);
-    view_render.setCursor(18, 56);
+    view_render.setCursor(1, 56);
     view_render.setTextColor(WHITE);
     view_render.print("UP/DN:go | MODE:start");
+
 }
 
 static void screen_tran_menu() {
