@@ -75,21 +75,21 @@ static void view_scr_submarine_game()
     }
     else
     {
-           view_render.setTextSize(1);
-    view_render.setTextColor(WHITE);
+        view_render.setTextSize(1);
+        view_render.setTextColor(WHITE);
 
-    /* GAME OVER - căn giữa */
-    view_render.setCursor(38, 15);
-    view_render.print("GAME OVER");
+        /* GAME OVER - căn giữa (9 ký tự x 6px = 54px, start = (128-54)/2 = 37) */
+        view_render.setCursor(37, 15);
+        view_render.print("GAME OVER");
 
-    /* Score - căn giữa */
-    view_render.setCursor(38, 28);
-    view_render.print("Score: ");
-    view_render.print(sb_game_score);
+        /* Score - căn giữa */
+        view_render.setCursor(37, 28);
+        view_render.print("Score: ");
+        view_render.print(sb_game_score);
 
-    /* Hướng dẫn - căn giữa */
-    view_render.setCursor(20, 45);
-    view_render.print("MODE to menu ");
+        /* MODE: menu - căn giữa (10 ký tự x 6px = 60px, start = (128-60)/2 = 34) */
+        view_render.setCursor(34, 45);
+        view_render.print("MODE: menu");
     }
 }
 static void handle_game_over()
