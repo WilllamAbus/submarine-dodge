@@ -88,7 +88,7 @@ static void view_scr_submarine_game()
         view_render.print(sb_game_score);
 
         /* MODE: menu - căn giữa (10 ký tự x 6px = 60px, start = (128-60)/2 = 34) */
-        view_render.setCursor(25, 45);
+         view_render.setCursor(28, 42);
         view_render.print("MODE to menu");
     }
 }
