@@ -5527,7 +5527,7 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/
 LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/lib/thumb/v7-m/nofp/libg.a
 LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/libgcc.a
 
-.debug_info     0x0000000000000000    0x806eb
+.debug_info     0x0000000000000000    0x80707
  .debug_info    0x0000000000000000      0x226 build_submarine-dodge-application/fsm.o
  .debug_info    0x0000000000000226     0x1154 build_submarine-dodge-application/task.o
  .debug_info    0x000000000000137a      0xb23 build_submarine-dodge-application/timer.o
@@ -5577,48 +5577,48 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
  .debug_info    0x00000000000203b8     0x6617 build_submarine-dodge-application/scr_idle.o
  .debug_info    0x00000000000269cf     0x2890 build_submarine-dodge-application/scr_info.o
  .debug_info    0x000000000002925f     0x28af build_submarine-dodge-application/scr_startup.o
- .debug_info    0x000000000002bb0e     0x281f build_submarine-dodge-application/scr_main_menu.o
- .debug_info    0x000000000002e32d      0xdc2 build_submarine-dodge-application/task_system.o
- .debug_info    0x000000000002f0ef     0x8570 build_submarine-dodge-application/app.o
- .debug_info    0x000000000003765f      0xa84 build_submarine-dodge-application/app_data.o
- .debug_info    0x00000000000380e3      0xa90 build_submarine-dodge-application/app_non_clear_ram.o
- .debug_info    0x0000000000038b73      0xdf5 build_submarine-dodge-application/app_bsp.o
- .debug_info    0x0000000000039968      0xfac build_submarine-dodge-application/app_modbus_pull.o
- .debug_info    0x000000000003a914     0x45da build_submarine-dodge-application/shell.o
- .debug_info    0x000000000003eeee      0xee4 build_submarine-dodge-application/task_shell.o
- .debug_info    0x000000000003fdd2      0xca9 build_submarine-dodge-application/task_life.o
- .debug_info    0x0000000000040a7b     0x18e3 build_submarine-dodge-application/task_fw.o
- .debug_info    0x000000000004235e     0x25f8 build_submarine-dodge-application/task_list.o
- .debug_info    0x0000000000044956     0x24c1 build_submarine-dodge-application/task_display.o
- .debug_info    0x0000000000046e17      0xe4c build_submarine-dodge-application/task_if.o
- .debug_info    0x0000000000047c63      0xb99 build_submarine-dodge-application/task_rf24_if.o
- .debug_info    0x00000000000487fc      0xe56 build_submarine-dodge-application/task_uart_if.o
- .debug_info    0x0000000000049652      0xb99 build_submarine-dodge-application/task_dbg.o
- .debug_info    0x000000000004a1eb     0x2699 build_submarine-dodge-application/sub_game_submarine.o
- .debug_info    0x000000000004c884     0x2785 build_submarine-dodge-application/sub_game_torpedo.o
- .debug_info    0x000000000004f009     0x28ca build_submarine-dodge-application/sub_game_obstacle.o
- .debug_info    0x00000000000518d3     0x2699 build_submarine-dodge-application/sub_game_bang.o
- .debug_info    0x0000000000053f6c     0x2dcd build_submarine-dodge-application/scr_submarine_game.o
- .debug_info    0x0000000000056d39     0x260a build_submarine-dodge-application/view_render.o
- .debug_info    0x0000000000059343     0x23ad build_submarine-dodge-application/screen_manager.o
- .debug_info    0x000000000005b6f0     0x4796 build_submarine-dodge-application/Adafruit_GFX.o
- .debug_info    0x000000000005fe86     0x2ffc build_submarine-dodge-application/Adafruit_oled_drv.o
- .debug_info    0x0000000000062e82      0xbef build_submarine-dodge-application/eeprom.o
- .debug_info    0x0000000000063a71      0xbf5 build_submarine-dodge-application/link_hal.o
- .debug_info    0x0000000000064666     0x16f6 build_submarine-dodge-application/link.o
- .debug_info    0x0000000000065d5c     0x1a2d build_submarine-dodge-application/link_mac.o
- .debug_info    0x0000000000067789     0x17b5 build_submarine-dodge-application/link_phy.o
- .debug_info    0x0000000000068f3e      0xf37 build_submarine-dodge-application/link_data.o
- .debug_info    0x0000000000069e75     0x22f1 build_submarine-dodge-application/wiring_digital.o
- .debug_info    0x000000000006c166     0x36c7 build_submarine-dodge-application/Print.o
- .debug_info    0x000000000006f82d     0x3b59 build_submarine-dodge-application/HardwareSerial.o
- .debug_info    0x0000000000073386     0x3b89 build_submarine-dodge-application/HardwareSerial2.o
- .debug_info    0x0000000000076f0f      0xfb7 build_submarine-dodge-application/SPI.o
- .debug_info    0x0000000000077ec6     0x46e6 build_submarine-dodge-application/Wire.o
- .debug_info    0x000000000007c5ac     0x2b50 build_submarine-dodge-application/twi.o
- .debug_info    0x000000000007f0fc     0x15ef build_submarine-dodge-application/mini_cpp.o
+ .debug_info    0x000000000002bb0e     0x2820 build_submarine-dodge-application/scr_main_menu.o
+ .debug_info    0x000000000002e32e      0xdc2 build_submarine-dodge-application/task_system.o
+ .debug_info    0x000000000002f0f0     0x8570 build_submarine-dodge-application/app.o
+ .debug_info    0x0000000000037660      0xa84 build_submarine-dodge-application/app_data.o
+ .debug_info    0x00000000000380e4      0xa90 build_submarine-dodge-application/app_non_clear_ram.o
+ .debug_info    0x0000000000038b74      0xdf5 build_submarine-dodge-application/app_bsp.o
+ .debug_info    0x0000000000039969      0xfac build_submarine-dodge-application/app_modbus_pull.o
+ .debug_info    0x000000000003a915     0x45da build_submarine-dodge-application/shell.o
+ .debug_info    0x000000000003eeef      0xee4 build_submarine-dodge-application/task_shell.o
+ .debug_info    0x000000000003fdd3      0xca9 build_submarine-dodge-application/task_life.o
+ .debug_info    0x0000000000040a7c     0x18e3 build_submarine-dodge-application/task_fw.o
+ .debug_info    0x000000000004235f     0x25f8 build_submarine-dodge-application/task_list.o
+ .debug_info    0x0000000000044957     0x24c1 build_submarine-dodge-application/task_display.o
+ .debug_info    0x0000000000046e18      0xe4c build_submarine-dodge-application/task_if.o
+ .debug_info    0x0000000000047c64      0xb99 build_submarine-dodge-application/task_rf24_if.o
+ .debug_info    0x00000000000487fd      0xe56 build_submarine-dodge-application/task_uart_if.o
+ .debug_info    0x0000000000049653      0xb99 build_submarine-dodge-application/task_dbg.o
+ .debug_info    0x000000000004a1ec     0x2699 build_submarine-dodge-application/sub_game_submarine.o
+ .debug_info    0x000000000004c885     0x2785 build_submarine-dodge-application/sub_game_torpedo.o
+ .debug_info    0x000000000004f00a     0x28ca build_submarine-dodge-application/sub_game_obstacle.o
+ .debug_info    0x00000000000518d4     0x2699 build_submarine-dodge-application/sub_game_bang.o
+ .debug_info    0x0000000000053f6d     0x2de8 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_info    0x0000000000056d55     0x260a build_submarine-dodge-application/view_render.o
+ .debug_info    0x000000000005935f     0x23ad build_submarine-dodge-application/screen_manager.o
+ .debug_info    0x000000000005b70c     0x4796 build_submarine-dodge-application/Adafruit_GFX.o
+ .debug_info    0x000000000005fea2     0x2ffc build_submarine-dodge-application/Adafruit_oled_drv.o
+ .debug_info    0x0000000000062e9e      0xbef build_submarine-dodge-application/eeprom.o
+ .debug_info    0x0000000000063a8d      0xbf5 build_submarine-dodge-application/link_hal.o
+ .debug_info    0x0000000000064682     0x16f6 build_submarine-dodge-application/link.o
+ .debug_info    0x0000000000065d78     0x1a2d build_submarine-dodge-application/link_mac.o
+ .debug_info    0x00000000000677a5     0x17b5 build_submarine-dodge-application/link_phy.o
+ .debug_info    0x0000000000068f5a      0xf37 build_submarine-dodge-application/link_data.o
+ .debug_info    0x0000000000069e91     0x22f1 build_submarine-dodge-application/wiring_digital.o
+ .debug_info    0x000000000006c182     0x36c7 build_submarine-dodge-application/Print.o
+ .debug_info    0x000000000006f849     0x3b59 build_submarine-dodge-application/HardwareSerial.o
+ .debug_info    0x00000000000733a2     0x3b89 build_submarine-dodge-application/HardwareSerial2.o
+ .debug_info    0x0000000000076f2b      0xfb7 build_submarine-dodge-application/SPI.o
+ .debug_info    0x0000000000077ee2     0x46e6 build_submarine-dodge-application/Wire.o
+ .debug_info    0x000000000007c5c8     0x2b50 build_submarine-dodge-application/twi.o
+ .debug_info    0x000000000007f118     0x15ef build_submarine-dodge-application/mini_cpp.o
 
-.debug_abbrev   0x0000000000000000    0x119a2
+.debug_abbrev   0x0000000000000000    0x119d5
  .debug_abbrev  0x0000000000000000       0xdc build_submarine-dodge-application/fsm.o
  .debug_abbrev  0x00000000000000dc      0x3c6 build_submarine-dodge-application/task.o
  .debug_abbrev  0x00000000000004a2      0x324 build_submarine-dodge-application/timer.o
@@ -5689,25 +5689,25 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
  .debug_abbrev  0x000000000000b589      0x4b3 build_submarine-dodge-application/sub_game_torpedo.o
  .debug_abbrev  0x000000000000ba3c      0x4bb build_submarine-dodge-application/sub_game_obstacle.o
  .debug_abbrev  0x000000000000bef7      0x459 build_submarine-dodge-application/sub_game_bang.o
- .debug_abbrev  0x000000000000c350      0x55b build_submarine-dodge-application/scr_submarine_game.o
- .debug_abbrev  0x000000000000c8ab      0x3e4 build_submarine-dodge-application/view_render.o
- .debug_abbrev  0x000000000000cc8f      0x339 build_submarine-dodge-application/screen_manager.o
- .debug_abbrev  0x000000000000cfc8      0x7bc build_submarine-dodge-application/Adafruit_GFX.o
- .debug_abbrev  0x000000000000d784      0x54a build_submarine-dodge-application/Adafruit_oled_drv.o
- .debug_abbrev  0x000000000000dcce      0x220 build_submarine-dodge-application/eeprom.o
- .debug_abbrev  0x000000000000deee      0x264 build_submarine-dodge-application/link_hal.o
- .debug_abbrev  0x000000000000e152      0x3c1 build_submarine-dodge-application/link.o
- .debug_abbrev  0x000000000000e513      0x4b1 build_submarine-dodge-application/link_mac.o
- .debug_abbrev  0x000000000000e9c4      0x5bc build_submarine-dodge-application/link_phy.o
- .debug_abbrev  0x000000000000ef80      0x304 build_submarine-dodge-application/link_data.o
- .debug_abbrev  0x000000000000f284      0x2dc build_submarine-dodge-application/wiring_digital.o
- .debug_abbrev  0x000000000000f560      0x548 build_submarine-dodge-application/Print.o
- .debug_abbrev  0x000000000000faa8      0x54f build_submarine-dodge-application/HardwareSerial.o
- .debug_abbrev  0x000000000000fff7      0x5d7 build_submarine-dodge-application/HardwareSerial2.o
- .debug_abbrev  0x00000000000105ce      0x39f build_submarine-dodge-application/SPI.o
- .debug_abbrev  0x000000000001096d      0x769 build_submarine-dodge-application/Wire.o
- .debug_abbrev  0x00000000000110d6      0x46b build_submarine-dodge-application/twi.o
- .debug_abbrev  0x0000000000011541      0x461 build_submarine-dodge-application/mini_cpp.o
+ .debug_abbrev  0x000000000000c350      0x58e build_submarine-dodge-application/scr_submarine_game.o
+ .debug_abbrev  0x000000000000c8de      0x3e4 build_submarine-dodge-application/view_render.o
+ .debug_abbrev  0x000000000000ccc2      0x339 build_submarine-dodge-application/screen_manager.o
+ .debug_abbrev  0x000000000000cffb      0x7bc build_submarine-dodge-application/Adafruit_GFX.o
+ .debug_abbrev  0x000000000000d7b7      0x54a build_submarine-dodge-application/Adafruit_oled_drv.o
+ .debug_abbrev  0x000000000000dd01      0x220 build_submarine-dodge-application/eeprom.o
+ .debug_abbrev  0x000000000000df21      0x264 build_submarine-dodge-application/link_hal.o
+ .debug_abbrev  0x000000000000e185      0x3c1 build_submarine-dodge-application/link.o
+ .debug_abbrev  0x000000000000e546      0x4b1 build_submarine-dodge-application/link_mac.o
+ .debug_abbrev  0x000000000000e9f7      0x5bc build_submarine-dodge-application/link_phy.o
+ .debug_abbrev  0x000000000000efb3      0x304 build_submarine-dodge-application/link_data.o
+ .debug_abbrev  0x000000000000f2b7      0x2dc build_submarine-dodge-application/wiring_digital.o
+ .debug_abbrev  0x000000000000f593      0x548 build_submarine-dodge-application/Print.o
+ .debug_abbrev  0x000000000000fadb      0x54f build_submarine-dodge-application/HardwareSerial.o
+ .debug_abbrev  0x000000000001002a      0x5d7 build_submarine-dodge-application/HardwareSerial2.o
+ .debug_abbrev  0x0000000000010601      0x39f build_submarine-dodge-application/SPI.o
+ .debug_abbrev  0x00000000000109a0      0x769 build_submarine-dodge-application/Wire.o
+ .debug_abbrev  0x0000000000011109      0x46b build_submarine-dodge-application/twi.o
+ .debug_abbrev  0x0000000000011574      0x461 build_submarine-dodge-application/mini_cpp.o
 
 .debug_loc      0x0000000000000000    0x1b8e9
  .debug_loc     0x0000000000000000       0x4a build_submarine-dodge-application/fsm.o
@@ -5974,7 +5974,7 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
  .debug_aranges
                 0x0000000000002488       0x60 build_submarine-dodge-application/mini_cpp.o
 
-.debug_ranges   0x0000000000000000     0x38c0
+.debug_ranges   0x0000000000000000     0x38d8
  .debug_ranges  0x0000000000000000       0x10 build_submarine-dodge-application/fsm.o
  .debug_ranges  0x0000000000000010       0xf0 build_submarine-dodge-application/task.o
  .debug_ranges  0x0000000000000100       0x90 build_submarine-dodge-application/timer.o
@@ -6042,27 +6042,27 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
  .debug_ranges  0x0000000000002940       0xa0 build_submarine-dodge-application/sub_game_torpedo.o
  .debug_ranges  0x00000000000029e0      0x170 build_submarine-dodge-application/sub_game_obstacle.o
  .debug_ranges  0x0000000000002b50       0x80 build_submarine-dodge-application/sub_game_bang.o
- .debug_ranges  0x0000000000002bd0       0x30 build_submarine-dodge-application/scr_submarine_game.o
- .debug_ranges  0x0000000000002c00       0x48 build_submarine-dodge-application/view_render.o
- .debug_ranges  0x0000000000002c48       0x30 build_submarine-dodge-application/screen_manager.o
- .debug_ranges  0x0000000000002c78      0x230 build_submarine-dodge-application/Adafruit_GFX.o
- .debug_ranges  0x0000000000002ea8       0xc8 build_submarine-dodge-application/Adafruit_oled_drv.o
- .debug_ranges  0x0000000000002f70       0x20 build_submarine-dodge-application/eeprom.o
- .debug_ranges  0x0000000000002f90       0x28 build_submarine-dodge-application/link_hal.o
- .debug_ranges  0x0000000000002fb8       0xf0 build_submarine-dodge-application/link.o
- .debug_ranges  0x00000000000030a8      0x168 build_submarine-dodge-application/link_mac.o
- .debug_ranges  0x0000000000003210      0x150 build_submarine-dodge-application/link_phy.o
- .debug_ranges  0x0000000000003360       0xb0 build_submarine-dodge-application/link_data.o
- .debug_ranges  0x0000000000003410       0x20 build_submarine-dodge-application/wiring_digital.o
- .debug_ranges  0x0000000000003430      0x1e8 build_submarine-dodge-application/Print.o
- .debug_ranges  0x0000000000003618       0x50 build_submarine-dodge-application/HardwareSerial.o
- .debug_ranges  0x0000000000003668       0x38 build_submarine-dodge-application/HardwareSerial2.o
- .debug_ranges  0x00000000000036a0       0x88 build_submarine-dodge-application/SPI.o
- .debug_ranges  0x0000000000003728       0xf0 build_submarine-dodge-application/Wire.o
- .debug_ranges  0x0000000000003818       0x58 build_submarine-dodge-application/twi.o
- .debug_ranges  0x0000000000003870       0x50 build_submarine-dodge-application/mini_cpp.o
+ .debug_ranges  0x0000000000002bd0       0x48 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_ranges  0x0000000000002c18       0x48 build_submarine-dodge-application/view_render.o
+ .debug_ranges  0x0000000000002c60       0x30 build_submarine-dodge-application/screen_manager.o
+ .debug_ranges  0x0000000000002c90      0x230 build_submarine-dodge-application/Adafruit_GFX.o
+ .debug_ranges  0x0000000000002ec0       0xc8 build_submarine-dodge-application/Adafruit_oled_drv.o
+ .debug_ranges  0x0000000000002f88       0x20 build_submarine-dodge-application/eeprom.o
+ .debug_ranges  0x0000000000002fa8       0x28 build_submarine-dodge-application/link_hal.o
+ .debug_ranges  0x0000000000002fd0       0xf0 build_submarine-dodge-application/link.o
+ .debug_ranges  0x00000000000030c0      0x168 build_submarine-dodge-application/link_mac.o
+ .debug_ranges  0x0000000000003228      0x150 build_submarine-dodge-application/link_phy.o
+ .debug_ranges  0x0000000000003378       0xb0 build_submarine-dodge-application/link_data.o
+ .debug_ranges  0x0000000000003428       0x20 build_submarine-dodge-application/wiring_digital.o
+ .debug_ranges  0x0000000000003448      0x1e8 build_submarine-dodge-application/Print.o
+ .debug_ranges  0x0000000000003630       0x50 build_submarine-dodge-application/HardwareSerial.o
+ .debug_ranges  0x0000000000003680       0x38 build_submarine-dodge-application/HardwareSerial2.o
+ .debug_ranges  0x00000000000036b8       0x88 build_submarine-dodge-application/SPI.o
+ .debug_ranges  0x0000000000003740       0xf0 build_submarine-dodge-application/Wire.o
+ .debug_ranges  0x0000000000003830       0x58 build_submarine-dodge-application/twi.o
+ .debug_ranges  0x0000000000003888       0x50 build_submarine-dodge-application/mini_cpp.o
 
-.debug_line     0x0000000000000000    0x27cce
+.debug_line     0x0000000000000000    0x27cde
  .debug_line    0x0000000000000000      0x144 build_submarine-dodge-application/fsm.o
  .debug_line    0x0000000000000144      0x9a5 build_submarine-dodge-application/task.o
  .debug_line    0x0000000000000ae9      0x575 build_submarine-dodge-application/timer.o
@@ -6133,27 +6133,27 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
  .debug_line    0x000000000001cbc1      0x737 build_submarine-dodge-application/sub_game_torpedo.o
  .debug_line    0x000000000001d2f8      0x959 build_submarine-dodge-application/sub_game_obstacle.o
  .debug_line    0x000000000001dc51      0x657 build_submarine-dodge-application/sub_game_bang.o
- .debug_line    0x000000000001e2a8      0x913 build_submarine-dodge-application/scr_submarine_game.o
- .debug_line    0x000000000001ebbb      0x67f build_submarine-dodge-application/view_render.o
- .debug_line    0x000000000001f23a      0x56f build_submarine-dodge-application/screen_manager.o
- .debug_line    0x000000000001f7a9     0x133b build_submarine-dodge-application/Adafruit_GFX.o
- .debug_line    0x0000000000020ae4      0x9a6 build_submarine-dodge-application/Adafruit_oled_drv.o
- .debug_line    0x000000000002148a      0x3f1 build_submarine-dodge-application/eeprom.o
- .debug_line    0x000000000002187b      0x48c build_submarine-dodge-application/link_hal.o
- .debug_line    0x0000000000021d07      0x886 build_submarine-dodge-application/link.o
- .debug_line    0x000000000002258d      0xac2 build_submarine-dodge-application/link_mac.o
- .debug_line    0x000000000002304f      0xc0e build_submarine-dodge-application/link_phy.o
- .debug_line    0x0000000000023c5d      0x6dc build_submarine-dodge-application/link_data.o
- .debug_line    0x0000000000024339      0x5df build_submarine-dodge-application/wiring_digital.o
- .debug_line    0x0000000000024918      0x9d5 build_submarine-dodge-application/Print.o
- .debug_line    0x00000000000252ed      0x604 build_submarine-dodge-application/HardwareSerial.o
- .debug_line    0x00000000000258f1      0x5b6 build_submarine-dodge-application/HardwareSerial2.o
- .debug_line    0x0000000000025ea7      0x769 build_submarine-dodge-application/SPI.o
- .debug_line    0x0000000000026610      0x97a build_submarine-dodge-application/Wire.o
- .debug_line    0x0000000000026f8a      0x7e3 build_submarine-dodge-application/twi.o
- .debug_line    0x000000000002776d      0x561 build_submarine-dodge-application/mini_cpp.o
+ .debug_line    0x000000000001e2a8      0x923 build_submarine-dodge-application/scr_submarine_game.o
+ .debug_line    0x000000000001ebcb      0x67f build_submarine-dodge-application/view_render.o
+ .debug_line    0x000000000001f24a      0x56f build_submarine-dodge-application/screen_manager.o
+ .debug_line    0x000000000001f7b9     0x133b build_submarine-dodge-application/Adafruit_GFX.o
+ .debug_line    0x0000000000020af4      0x9a6 build_submarine-dodge-application/Adafruit_oled_drv.o
+ .debug_line    0x000000000002149a      0x3f1 build_submarine-dodge-application/eeprom.o
+ .debug_line    0x000000000002188b      0x48c build_submarine-dodge-application/link_hal.o
+ .debug_line    0x0000000000021d17      0x886 build_submarine-dodge-application/link.o
+ .debug_line    0x000000000002259d      0xac2 build_submarine-dodge-application/link_mac.o
+ .debug_line    0x000000000002305f      0xc0e build_submarine-dodge-application/link_phy.o
+ .debug_line    0x0000000000023c6d      0x6dc build_submarine-dodge-application/link_data.o
+ .debug_line    0x0000000000024349      0x5df build_submarine-dodge-application/wiring_digital.o
+ .debug_line    0x0000000000024928      0x9d5 build_submarine-dodge-application/Print.o
+ .debug_line    0x00000000000252fd      0x604 build_submarine-dodge-application/HardwareSerial.o
+ .debug_line    0x0000000000025901      0x5b6 build_submarine-dodge-application/HardwareSerial2.o
+ .debug_line    0x0000000000025eb7      0x769 build_submarine-dodge-application/SPI.o
+ .debug_line    0x0000000000026620      0x97a build_submarine-dodge-application/Wire.o
+ .debug_line    0x0000000000026f9a      0x7e3 build_submarine-dodge-application/twi.o
+ .debug_line    0x000000000002777d      0x561 build_submarine-dodge-application/mini_cpp.o
 
-.debug_str      0x0000000000000000    0x17cb9
+.debug_str      0x0000000000000000    0x17cca
  .debug_str     0x0000000000000000      0x1c4 build_submarine-dodge-application/fsm.o
                                         0x258 (size before relaxing)
  .debug_str     0x00000000000001c4      0x5fe build_submarine-dodge-application/task.o
@@ -6294,43 +6294,43 @@ LOAD /home/thaikha/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-no
                                        0x1642 (size before relaxing)
  .debug_str     0x0000000000013b7d      0x134 build_submarine-dodge-application/sub_game_bang.o
                                        0x14bb (size before relaxing)
- .debug_str     0x0000000000013cb1      0x108 build_submarine-dodge-application/scr_submarine_game.o
-                                       0x1b3f (size before relaxing)
- .debug_str     0x0000000000013db9      0x1b4 build_submarine-dodge-application/view_render.o
+ .debug_str     0x0000000000013cb1      0x119 build_submarine-dodge-application/scr_submarine_game.o
+                                       0x1b50 (size before relaxing)
+ .debug_str     0x0000000000013dca      0x1b4 build_submarine-dodge-application/view_render.o
                                        0x1117 (size before relaxing)
- .debug_str     0x0000000000013f6d       0xfe build_submarine-dodge-application/screen_manager.o
+ .debug_str     0x0000000000013f7e       0xfe build_submarine-dodge-application/screen_manager.o
                                        0x107f (size before relaxing)
- .debug_str     0x000000000001406b      0x787 build_submarine-dodge-application/Adafruit_GFX.o
+ .debug_str     0x000000000001407c      0x787 build_submarine-dodge-application/Adafruit_GFX.o
                                        0x192a (size before relaxing)
- .debug_str     0x00000000000147f2      0x5c1 build_submarine-dodge-application/Adafruit_oled_drv.o
+ .debug_str     0x0000000000014803      0x5c1 build_submarine-dodge-application/Adafruit_oled_drv.o
                                        0x14b7 (size before relaxing)
- .debug_str     0x0000000000014db3       0x21 build_submarine-dodge-application/eeprom.o
+ .debug_str     0x0000000000014dc4       0x21 build_submarine-dodge-application/eeprom.o
                                         0x430 (size before relaxing)
- .debug_str     0x0000000000014dd4       0xdd build_submarine-dodge-application/link_hal.o
+ .debug_str     0x0000000000014de5       0xdd build_submarine-dodge-application/link_hal.o
                                         0x505 (size before relaxing)
- .debug_str     0x0000000000014eb1      0x3e4 build_submarine-dodge-application/link.o
+ .debug_str     0x0000000000014ec2      0x3e4 build_submarine-dodge-application/link.o
                                         0xd22 (size before relaxing)
- .debug_str     0x0000000000015295      0x556 build_submarine-dodge-application/link_mac.o
+ .debug_str     0x00000000000152a6      0x556 build_submarine-dodge-application/link_mac.o
                                         0xfce (size before relaxing)
- .debug_str     0x00000000000157eb      0x46a build_submarine-dodge-application/link_phy.o
+ .debug_str     0x00000000000157fc      0x46a build_submarine-dodge-application/link_phy.o
                                         0xea5 (size before relaxing)
- .debug_str     0x0000000000015c55       0xe9 build_submarine-dodge-application/link_data.o
+ .debug_str     0x0000000000015c66       0xe9 build_submarine-dodge-application/link_data.o
                                         0x60a (size before relaxing)
- .debug_str     0x0000000000015d3e       0x56 build_submarine-dodge-application/wiring_digital.o
+ .debug_str     0x0000000000015d4f       0x56 build_submarine-dodge-application/wiring_digital.o
                                         0xf57 (size before relaxing)
- .debug_str     0x0000000000015d94      0x330 build_submarine-dodge-application/Print.o
+ .debug_str     0x0000000000015da5      0x330 build_submarine-dodge-application/Print.o
                                        0x112b (size before relaxing)
- .debug_str     0x00000000000160c4     0x1122 build_submarine-dodge-application/HardwareSerial.o
+ .debug_str     0x00000000000160d5     0x1122 build_submarine-dodge-application/HardwareSerial.o
                                        0x2000 (size before relaxing)
- .debug_str     0x00000000000171e6       0xc1 build_submarine-dodge-application/HardwareSerial2.o
+ .debug_str     0x00000000000171f7       0xc1 build_submarine-dodge-application/HardwareSerial2.o
                                        0x1ffc (size before relaxing)
- .debug_str     0x00000000000172a7      0x104 build_submarine-dodge-application/SPI.o
+ .debug_str     0x00000000000172b8      0x104 build_submarine-dodge-application/SPI.o
                                         0x9de (size before relaxing)
- .debug_str     0x00000000000173ab      0x6d5 build_submarine-dodge-application/Wire.o
+ .debug_str     0x00000000000173bc      0x6d5 build_submarine-dodge-application/Wire.o
                                        0x2481 (size before relaxing)
- .debug_str     0x0000000000017a80       0xee build_submarine-dodge-application/twi.o
+ .debug_str     0x0000000000017a91       0xee build_submarine-dodge-application/twi.o
                                        0x13d4 (size before relaxing)
- .debug_str     0x0000000000017b6e      0x14b build_submarine-dodge-application/mini_cpp.o
+ .debug_str     0x0000000000017b7f      0x14b build_submarine-dodge-application/mini_cpp.o
                                         0x97d (size before relaxing)
 
 .comment        0x0000000000000000       0x49

@@ -86,7 +86,13 @@ static void view_scr_submarine_game()
         view_render.print("MODE to restart");
     }
 }
-
+static void handle_game_over()
+{
+    sub_game_bang_spawn(submarine.x, submarine.y);
+    BUZZER_PlayTones(tones_3beep);
+    game_state = GAME_STATE_OVER;
+    timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
+}
 /* ==================== HANDLER ==================== */
 void scr_submarine_game_handle(ak_msg_t *msg)
 {
@@ -142,14 +148,10 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         }
 
         /* Kiểm tra đạn địch trúng tàu player , */
-        if (sub_game_enemy_bullet_hit_submarine() && sub_game_obstacle_hit_submarine())
+        if (sub_game_obstacle_hit_submarine() || sub_game_enemy_bullet_hit_submarine())
         {
-            sub_game_bang_spawn(submarine.x, submarine.y);
-            BUZZER_PlayTones(tones_3beep);
-            game_state = GAME_STATE_OVER;
-            timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
+            handle_game_over();
         }
-  
     }
     break;
 
