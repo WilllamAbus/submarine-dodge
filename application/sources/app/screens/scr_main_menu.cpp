@@ -1,6 +1,6 @@
 #include "scr_main_menu.h"
 #include "scr_submarine_game.h"
-
+#include "scr_loading.h"
 #define NUMBER_MENU_ITEMS   (1)
 
 static const char* menu_items_name[NUMBER_MENU_ITEMS] = {
@@ -57,7 +57,7 @@ static void view_scr_main_menu() {
 static void screen_tran_menu() {
     switch (menu_selected) {
     case 0:
-        SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
+        SCREEN_TRAN(scr_loading_handle, &scr_loading);
         break;
     default:
         break;
