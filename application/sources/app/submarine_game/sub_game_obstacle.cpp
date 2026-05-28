@@ -1,5 +1,5 @@
 #include "sub_game_obstacle.h"
-
+#include "sub_game_boss.h"
 obstacle_t obstacles[OBSTACLE_MAX];
 
 /* Bitmap chướng ngại vật 8x8 (hình mìn) */
@@ -176,36 +176,51 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
             }
         }
 
-        /* Tàu địch bắn tự động */
-        static uint8_t shoot_tick = 0;
-        shoot_tick++;
-        if (shoot_tick >= 8)
+        /* Chỉ spawn và bắn khi boss chưa xuất hiện */
+        if (!boss.active)
         {
-            shoot_tick = 0;
-            for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+            /* Tàu địch bắn tự động */
+            static uint8_t shoot_tick = 0;
+            shoot_tick++;
+            if (shoot_tick >= 8)
             {
-                if (!obstacles[i].active)
-                    continue;
-                /* Tìm slot đạn trống */
-                for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++)
+                shoot_tick = 0;
+                for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
                 {
-                    if (enemy_bullets[j].active)
+                    if (!obstacles[i].active)
                         continue;
-                    enemy_bullets[j].active = 1;
-                    enemy_bullets[j].x = obstacles[i].x;
-                    enemy_bullets[j].y = obstacles[i].y + OBSTACLE_HEIGHT / 2;
-                    break;
+                    for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++)
+                    {
+                        if (enemy_bullets[j].active)
+                            continue;
+                        enemy_bullets[j].active = 1;
+                        enemy_bullets[j].x = obstacles[i].x;
+                        enemy_bullets[j].y = obstacles[i].y + OBSTACLE_HEIGHT / 2;
+                        break;
+                    }
                 }
             }
-        }
 
-        /* Spawn obstacle */
-        static uint8_t spawn_tick = 0;
-        spawn_tick++;
-        if (spawn_tick >= 5)
+            /* Spawn obstacle */
+            static uint8_t spawn_tick = 0;
+            spawn_tick++;
+            if (spawn_tick >= 5)
+            {
+                spawn_tick = 0;
+                sub_game_obstacle_spawn(1);
+            }
+        }
+        else
         {
-            spawn_tick = 0;
-            sub_game_obstacle_spawn(1);
+            /* Boss xuất hiện → xóa hết obstacle và đạn còn lại */
+            for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+            {
+                obstacles[i].active = 0;
+            }
+            for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
+            {
+                enemy_bullets[i].active = 0;
+            }
         }
     }
     break;
