@@ -26,6 +26,10 @@
 
 /* Vị trí cố định theo trục X */
 #define SUBMARINE_X         10
+#define SUBMARINE_HP_MAX    1
+
+
+
 
 /* Struct tàu ngầm */
 typedef struct {
@@ -36,7 +40,7 @@ typedef struct {
 
 /* Biến toàn cục */
 extern submarine_t submarine;
-
+extern uint8_t submarine_hp;
 /* Hàm xử lý */
 void sub_game_submarine_setup();
 void sub_game_submarine_up();
@@ -44,5 +48,5 @@ void sub_game_submarine_down();
 void sub_game_submarine_reset();
 void sub_game_submarine_draw();
 void sub_game_submarine_handle(ak_msg_t* msg);
-
+void sub_game_submarine_draw_hp();
 #endif /* __SUB_GAME_SUBMARINE_H__ */

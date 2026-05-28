@@ -1,5 +1,6 @@
 #include "scr_submarine_game.h"
-
+#include "sub_game_boss.h"
+#include "scr_victory.h"
 #define SB_GAME_SPAWN_INTERVAL (5)
 
 typedef enum
@@ -67,7 +68,9 @@ static void view_scr_submarine_game()
         sub_game_obstacle_draw();
         sub_game_bang_draw();
         sub_game_obstacle_draw_bullets();
-
+        sub_game_boss_draw();
+        sub_game_boss_draw_hp();
+        sub_game_submarine_draw_hp();
         view_render.setCursor(85, 2);
         view_render.setTextSize(1);
         view_render.setTextColor(WHITE);
@@ -88,7 +91,7 @@ static void view_scr_submarine_game()
         view_render.print(sb_game_score);
 
         /* MODE: menu - căn giữa (10 ký tự x 6px = 60px, start = (128-60)/2 = 34) */
-         view_render.setCursor(28, 42);
+        view_render.setCursor(28, 42);
         view_render.print("MODE to menu");
     }
 }
@@ -116,7 +119,7 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_SETUP);
         task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_SETUP);
         task_post_pure_msg(SB_GAME_BANG_ID, SB_GAME_BANG_SETUP);
-
+        task_post_pure_msg(SB_GAME_BOSS_ID, SB_GAME_BOSS_SETUP);
         /* Bắt đầu timer game loop */
         timer_set(AC_TASK_DISPLAY_ID,
                   SB_GAME_TIME_TICK,
@@ -130,14 +133,20 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         if (game_state != GAME_STATE_PLAYING)
             break;
 
-        /* Bỏ tự động tăng điểm - xóa dòng sb_game_score++ */
-
-        /* Update vị trí */
+        /* Update tất cả object */
         task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_RUN);
         task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_RUN);
         task_post_pure_msg(SB_GAME_BANG_ID, SB_GAME_BANG_UPDATE);
         task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_UPDATE);
-        /* +10 điểm: torpedo bắn trúng obstacle */
+        task_post_pure_msg(SB_GAME_BOSS_ID, SB_GAME_BOSS_UPDATE);
+
+        /* Kích hoạt boss khi đạt 200 điểm */
+        if (sb_game_score >= BOSS_SCORE_TRIGGER && !boss.active && boss.hp > 0)
+        {
+            boss.active = 1;
+        }
+
+        /* Torpedo trúng obstacle */
         for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
         {
             if (!obstacles[i].active)
@@ -153,8 +162,24 @@ void scr_submarine_game_handle(ak_msg_t *msg)
             }
         }
 
-        /* Kiểm tra đạn địch trúng tàu player , */
-        if (sub_game_obstacle_hit_submarine() || sub_game_enemy_bullet_hit_submarine())
+        /* Torpedo trúng boss */
+        if (sub_game_boss_hit_by_torpedo())
+        {
+            sub_game_bang_spawn(boss.x, boss.y);
+            sb_game_score += 10;
+            if (boss.hp == 0)
+            {
+                victory_score = sb_game_score;
+                timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
+                SCREEN_TRAN(scr_victory_handle, &scr_victory);
+                break;
+            }
+        }
+
+        /* Va chạm → Game Over */
+        if (sub_game_obstacle_hit_submarine() ||
+            sub_game_enemy_bullet_hit_submarine() ||
+            sub_game_boss_bullet_hit_submarine())
         {
             handle_game_over();
         }

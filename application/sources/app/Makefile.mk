@@ -36,3 +36,4 @@ SOURCES_CPP += sources/app/submarine_game/sub_game_torpedo.cpp
 SOURCES_CPP += sources/app/submarine_game/sub_game_obstacle.cpp
 SOURCES_CPP += sources/app/submarine_game/sub_game_bang.cpp
 SOURCES_CPP += sources/app/screens/scr_submarine_game.cpp
+SOURCES_CPP += sources/app/submarine_game/sub_game_boss.cpp
