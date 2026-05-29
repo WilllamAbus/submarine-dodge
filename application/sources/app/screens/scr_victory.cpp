@@ -1,6 +1,6 @@
 #include "scr_victory.h"
 #include "scr_main_menu.h"
-
+#include "scr_ranking.h"
 uint32_t victory_score = 0;
 
 static void view_scr_victory();
@@ -43,8 +43,11 @@ void scr_victory_handle(ak_msg_t* msg) {
     switch (msg->sig) {
 
     case SCREEN_ENTRY: {
+
         APP_DBG_SIG("SCREEN_ENTRY\n");
+          
         BUZZER_PlayTones(tones_SMB);
+         ranking_update(victory_score);
     }
     break;
 

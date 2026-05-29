@@ -1,6 +1,7 @@
 #include "scr_submarine_game.h"
 #include "sub_game_boss.h"
 #include "scr_victory.h"
+#include "scr_ranking.h"
 #define SB_GAME_SPAWN_INTERVAL (5)
 
 typedef enum
@@ -95,8 +96,8 @@ static void view_scr_submarine_game()
         view_render.print("MODE to menu");
     }
 }
-static void handle_game_over()
-{
+static void handle_game_over() {
+    ranking_update(sb_game_score);  /* Lưu điểm vào ranking */
     sub_game_bang_spawn(submarine.x, submarine.y);
     BUZZER_PlayTones(tones_3beep);
     game_state = GAME_STATE_OVER;
