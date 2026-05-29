@@ -1,4 +1,5 @@
 #include "scr_victory.h"
+#include "sub_game_common.h"
 #include "scr_main_menu.h"
 #include "scr_ranking.h"
 uint32_t victory_score = 0;
@@ -46,7 +47,7 @@ void scr_victory_handle(ak_msg_t* msg) {
 
         APP_DBG_SIG("SCREEN_ENTRY\n");
           
-        BUZZER_PlayTones(tones_SMB);
+        game_buzzer_play(tones_SMB);
          ranking_update(victory_score);
     }
     break;

@@ -1,4 +1,5 @@
 #include "sub_game_torpedo.h"
+#include "sub_game_common.h"
 
 torpedo_t torpedoes[TORPEDO_MAX];
 
@@ -74,7 +75,7 @@ void sub_game_torpedo_handle(ak_msg_t* msg) {
             torpedoes[i].x     = submarine.x + SUBMARINE_WIDTH;
             torpedoes[i].y     = submarine.y + SUBMARINE_HEIGHT / 2;
             torpedoes[i].dir   = +1;  /* Bay sang phải */
-            BUZZER_PlayTones(tones_3beep);     
+            game_buzzer_play(tones_3beep);     
             break;
         }
     }

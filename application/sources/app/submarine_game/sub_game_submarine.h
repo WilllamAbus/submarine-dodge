@@ -49,4 +49,5 @@ void sub_game_submarine_reset();
 void sub_game_submarine_draw();
 void sub_game_submarine_handle(ak_msg_t* msg);
 void sub_game_submarine_draw_hp();
+void game_buzzer_play(const Tone_TypeDef* tones);
 #endif /* __SUB_GAME_SUBMARINE_H__ */

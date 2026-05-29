@@ -1,4 +1,5 @@
 #include "scr_submarine_game.h"
+#include "sub_game_common.h"
 #include "sub_game_boss.h"
 #include "scr_victory.h"
 #include "scr_ranking.h"
@@ -99,7 +100,7 @@ static void view_scr_submarine_game()
 static void handle_game_over() {
     ranking_update(sb_game_score);  /* Lưu điểm vào ranking */
     sub_game_bang_spawn(submarine.x, submarine.y);
-    BUZZER_PlayTones(tones_3beep);
+    game_buzzer_play(tones_3beep);
     game_state = GAME_STATE_OVER;
     timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
 }

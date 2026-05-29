@@ -5,7 +5,9 @@
 
 #define OBSTACLE_WIDTH      16   /* tăng từ 8 lên 16 */
 #define OBSTACLE_HEIGHT     8
-#define OBSTACLE_SPEED      2
+#define OBSTACLE_SPEED_EASY     1
+#define OBSTACLE_SPEED_NORMAL   2
+#define OBSTACLE_SPEED_HARD     4
 #define OBSTACLE_MAX        4    /* Tối đa 4 chướng ngại vật */
 
 

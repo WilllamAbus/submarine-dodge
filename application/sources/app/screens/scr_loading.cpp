@@ -1,4 +1,5 @@
 #include "scr_loading.h"
+#include "sub_game_common.h"
 #include "scr_submarine_game.h"
 
 #define LOADING_INTERVAL    (80)   /* 80ms mỗi tick */
@@ -72,7 +73,7 @@ void scr_loading_handle(ak_msg_t* msg) {
         loading_progress++;
         if (loading_progress >= LOADING_MAX) {
             timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_LOADING_UPDATE);
-            BUZZER_PlayTones(tones_3beep);
+            game_buzzer_play(tones_3beep);
             SCREEN_TRAN(scr_submarine_game_handle, &scr_submarine_game);
         }
     }

@@ -1,5 +1,6 @@
 #include "sub_game_obstacle.h"
 #include "sub_game_boss.h"
+#include "scr_settings.h"
 obstacle_t obstacles[OBSTACLE_MAX];
 
 /* Bitmap chướng ngại vật 8x8 (hình mìn) */
@@ -62,24 +63,23 @@ void sub_game_obstacle_spawn(uint8_t from_right)
     }
 }
 
-void sub_game_obstacle_update()
-{
-    for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-    {
-        if (!obstacles[i].active)
-            continue;
+void sub_game_obstacle_update() {
+    uint8_t speed;
+    switch (game_settings.speed) {
+        case SPEED_EASY:  speed = OBSTACLE_SPEED_EASY;   break;
+        case SPEED_HARD:  speed = OBSTACLE_SPEED_HARD;   break;
+        default:          speed = OBSTACLE_SPEED_NORMAL; break;
+    }
 
-        obstacles[i].x += obstacles[i].dir * OBSTACLE_SPEED;
-
-        /* Ra khỏi màn hình thì deactivate */
+    for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
+        if (!obstacles[i].active) continue;
+        obstacles[i].x += obstacles[i].dir * speed;
         if (obstacles[i].x > LCD_WIDTH ||
-            obstacles[i].x < -OBSTACLE_WIDTH)
-        {
+            obstacles[i].x < -OBSTACLE_WIDTH) {
             obstacles[i].active = 0;
         }
     }
 }
-
 void sub_game_obstacle_draw()
 {
     for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
@@ -202,9 +202,25 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
             }
 
             /* Spawn obstacle */
+            /* Spawn obstacle theo speed */
             static uint8_t spawn_tick = 0;
             spawn_tick++;
-            if (spawn_tick >= 5)
+
+            uint8_t spawn_interval;
+            switch (game_settings.speed)
+            {
+            case SPEED_EASY:
+                spawn_interval = 8;
+                break;
+            case SPEED_HARD:
+                spawn_interval = 3;
+                break;
+            default:
+                spawn_interval = 5;
+                break;
+            }
+
+            if (spawn_tick >= spawn_interval)
             {
                 spawn_tick = 0;
                 sub_game_obstacle_spawn(1);

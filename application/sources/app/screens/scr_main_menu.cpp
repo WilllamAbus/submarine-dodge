@@ -2,13 +2,14 @@
 #include "scr_submarine_game.h"
 #include "scr_loading.h"
 #include "scr_ranking.h"
+#include "scr_settings.h"
+#define NUMBER_MENU_ITEMS   (3)
 
-#define NUMBER_MENU_ITEMS   (2)
 static const char* menu_items_name[NUMBER_MENU_ITEMS] = {
     "Submarine Dodge",
     "Ranking",
+    "Settings",
 };
-
 
 
 static uint8_t menu_selected = 0;
@@ -66,6 +67,9 @@ static void screen_tran_menu() {
     case 1:
         SCREEN_TRAN(scr_ranking_handle, &scr_ranking);
         break;
+    case 2:
+        SCREEN_TRAN(scr_settings_handle, &scr_settings);
+    break;
     default:
         break;
     }
