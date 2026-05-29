@@ -70,7 +70,6 @@ static void view_scr_settings()
     view_render.setCursor(32, 2);
     view_render.print("SETTINGS");
 
-
     /* Confirm reset */
     if (confirm_reset)
     {
@@ -82,7 +81,7 @@ static void view_scr_settings()
     }
 
     /* Menu items */
-    const char *items[] = {"Sound", "Speed", "Reset", "Back"};
+    const char *items[] = {"Sound", "Speed", "Reset"};
     for (uint8_t i = 0; i < SETTINGS_MENU_MAX; i++)
     {
         uint8_t y = 16 + i * 12;
@@ -108,13 +107,18 @@ static void view_scr_settings()
             const char *speeds[] = {"Easy", "Normal", "Hard"};
             view_render.print(speeds[game_settings.speed]);
         }
-        else
+        else if (i == 2)
         {
-            view_render.print("Scores");
+            view_render.print("Scores"); /* Fix typo */
+        }
+        else if (i == 3)
+        {
+            /* Back - không hiện giá trị gì */
         }
     }
 
-
+    view_render.setCursor(28, 55);
+    view_render.print("Back to menu");
 }
 
 /* ==================== HANDLER ==================== */
@@ -152,22 +156,17 @@ void scr_settings_handle(ak_msg_t *msg)
     }
     break;
 
-    case AC_DISPLAY_BUTON_DOWN_RELEASED:
-    {
-        if (confirm_reset)
-        {
-            /* Hủy reset */
-            confirm_reset = 0;
-        }
-        else
-        {
-            if (settings_selected < SETTINGS_MENU_MAX - 1)
-            {
-                settings_selected++;
-            }
-        }
+case AC_DISPLAY_BUTON_DOWN_RELEASED: {
+    if (confirm_reset) {
+        confirm_reset = 0;
+    } else if (settings_selected < SETTINGS_MENU_MAX - 1) {
+        settings_selected++;
+    } else {
+        /* Đang ở item cuối, nhấn Down → Back to menu */
+        SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
     }
-    break;
+}
+break;
 
     case AC_DISPLAY_BUTON_MODE_RELEASED:
     {
@@ -197,10 +196,7 @@ void scr_settings_handle(ak_msg_t *msg)
             /* Reset Scores - hỏi xác nhận */
             confirm_reset = 1;
             break;
-        case 3:
-            /* Back về Main Menu */
-            SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
-            break;
+    
         default:
             /* Thoát về Main Menu */
             SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);

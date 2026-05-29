@@ -16,7 +16,7 @@
 #include "eeprom.h"
 
 #define EEPROM_SETTINGS_ADDR    0x20
-#define SETTINGS_MENU_MAX       4
+#define SETTINGS_MENU_MAX       3
 
 typedef enum {
     SPEED_EASY   = 0,
