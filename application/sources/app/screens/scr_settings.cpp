@@ -69,7 +69,7 @@ static void view_scr_settings()
     /* Title */
     view_render.setCursor(32, 2);
     view_render.print("SETTINGS");
-    view_render.drawFastHLine(0, 12, LCD_WIDTH, WHITE);
+
 
     /* Confirm reset */
     if (confirm_reset)
@@ -114,10 +114,7 @@ static void view_scr_settings()
         }
     }
 
-    /* Hướng dẫn */
-    view_render.drawFastHLine(0, 54, LCD_WIDTH, WHITE);
-    view_render.setCursor(2, 56);
-    view_render.print("MODE:edit UP/DN:chon");
+
 }
 
 /* ==================== HANDLER ==================== */
