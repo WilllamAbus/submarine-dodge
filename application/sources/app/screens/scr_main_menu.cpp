@@ -37,20 +37,18 @@ static void view_scr_main_menu() {
     view_render.drawFastHLine(0, 12, LCD_WIDTH, WHITE);
 
     /* Danh sách game với mũi tên chỉ */
-    for (uint8_t i = 0; i < NUMBER_MENU_ITEMS; i++) {
-        uint8_t y = 20 + i * 18;
+for (uint8_t i = 0; i < NUMBER_MENU_ITEMS; i++) {
+    uint8_t y = 16 + i * 13;  /* Giảm từ 18 xuống 13 */
 
-        if (i == menu_selected) {
-            /* Vẽ mũi tên ► trước tên game */
-            view_render.setCursor(2, y);
-            view_render.setTextColor(WHITE);
-            view_render.print(">");
-        }
-
-        view_render.setCursor(12, y);
-        view_render.setTextColor(WHITE);
-        view_render.print(menu_items_name[i]);
+    if (i == menu_selected) {
+        view_render.setCursor(2, y);
+        view_render.print(">");
     }
+
+    view_render.setCursor(12, y);
+    view_render.setTextColor(WHITE);
+    view_render.print(menu_items_name[i]);
+}
 
     /* Hướng dẫn */
     view_render.drawFastHLine(0, 54, LCD_WIDTH, WHITE);
