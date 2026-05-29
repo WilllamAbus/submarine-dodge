@@ -1,7 +1,0 @@
-sources/app/submarine_game/sub_game_boss.cpp:39:6:void sub_game_boss_setup()	0	static
-sources/app/submarine_game/sub_game_boss.cpp:52:6:void sub_game_boss_update()	20	static
-sources/app/submarine_game/sub_game_boss.cpp:120:9:uint8_t sub_game_boss_hit_by_torpedo()	20	static
-sources/app/submarine_game/sub_game_boss.cpp:141:9:uint8_t sub_game_boss_bullet_hit_submarine()	20	static
-sources/app/submarine_game/sub_game_boss.cpp:157:6:void sub_game_boss_handle(ak_msg_t*)	0	static
-sources/app/submarine_game/sub_game_boss.cpp:87:6:void sub_game_boss_draw()	40	static
-sources/app/submarine_game/sub_game_boss.cpp:103:6:void sub_game_boss_draw_hp()	24	static

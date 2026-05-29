@@ -1,7 +1,0 @@
-sources/app/submarine_game/sub_game_submarine.cpp:30:6:void sub_game_submarine_draw_hp()	40	static
-sources/app/submarine_game/sub_game_submarine.cpp:37:6:void sub_game_submarine_setup()	0	static
-sources/app/submarine_game/sub_game_submarine.cpp:45:6:void sub_game_submarine_up()	0	static
-sources/app/submarine_game/sub_game_submarine.cpp:53:6:void sub_game_submarine_down()	0	static
-sources/app/submarine_game/sub_game_submarine.cpp:61:6:void sub_game_submarine_reset()	0	static
-sources/app/submarine_game/sub_game_submarine.cpp:66:6:void sub_game_submarine_draw()	24	static
-sources/app/submarine_game/sub_game_submarine.cpp:77:6:void sub_game_submarine_handle(ak_msg_t*)	8	static

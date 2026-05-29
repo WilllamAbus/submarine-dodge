@@ -1,2 +1,0 @@
-sources/app/screens/scr_submarine_game.cpp:108:6:void scr_submarine_game_handle(ak_msg_t*)	24	static
-sources/app/screens/scr_submarine_game.cpp:61:13:void view_scr_submarine_game()	24	static

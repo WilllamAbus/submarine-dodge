@@ -1,5 +1,0 @@
-sources/app/screens/scr_settings.cpp:10:6:void settings_load()	8	static
-sources/app/screens/scr_settings.cpp:27:6:void settings_save()	0	static
-sources/app/screens/scr_settings.cpp:34:6:void settings_apply_speed()	0	static
-sources/app/screens/scr_settings.cpp:124:6:void scr_settings_handle(ak_msg_t*)	32	static
-sources/app/screens/scr_settings.cpp:64:13:void view_scr_settings()	80	static
