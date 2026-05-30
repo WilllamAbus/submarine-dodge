@@ -81,21 +81,21 @@ static void view_scr_settings()
     }
 
     /* Menu items */
+    /* Menu items */
     const char *items[] = {"Sound", "Speed", "Reset"};
     for (uint8_t i = 0; i < SETTINGS_MENU_MAX; i++)
     {
         uint8_t y = 16 + i * 12;
 
-        /* Mũi tên chỉ */
         if (i == settings_selected)
         {
-            view_render.setCursor(2, y);
+            view_render.setCursor(20, y); /* Mũi tên */
             view_render.print(">");
         }
 
-        view_render.setCursor(12, y);
+        view_render.setCursor(30, y); /* Tên item căn giữa */
         view_render.print(items[i]);
-        view_render.setCursor(55, y);
+        view_render.setCursor(70, y); /* Giá trị */
         view_render.print(": ");
 
         if (i == 0)
@@ -109,14 +109,11 @@ static void view_scr_settings()
         }
         else if (i == 2)
         {
-            view_render.print("Scores"); /* Fix typo */
-        }
-        else if (i == 3)
-        {
-            /* Back - không hiện giá trị gì */
+            view_render.print("Scores");
         }
     }
 
+    /* Back to menu căn giữa */
     view_render.setCursor(28, 55);
     view_render.print("Back to menu");
 }
@@ -156,17 +153,23 @@ void scr_settings_handle(ak_msg_t *msg)
     }
     break;
 
-case AC_DISPLAY_BUTON_DOWN_RELEASED: {
-    if (confirm_reset) {
-        confirm_reset = 0;
-    } else if (settings_selected < SETTINGS_MENU_MAX - 1) {
-        settings_selected++;
-    } else {
-        /* Đang ở item cuối, nhấn Down → Back to menu */
-        SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
+    case AC_DISPLAY_BUTON_DOWN_RELEASED:
+    {
+        if (confirm_reset)
+        {
+            confirm_reset = 0;
+        }
+        else if (settings_selected < SETTINGS_MENU_MAX - 1)
+        {
+            settings_selected++;
+        }
+        else
+        {
+            /* Đang ở item cuối, nhấn Down → Back to menu */
+            SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
+        }
     }
-}
-break;
+    break;
 
     case AC_DISPLAY_BUTON_MODE_RELEASED:
     {
@@ -196,7 +199,7 @@ break;
             /* Reset Scores - hỏi xác nhận */
             confirm_reset = 1;
             break;
-    
+
         default:
             /* Thoát về Main Menu */
             SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
