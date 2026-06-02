@@ -170,7 +170,7 @@ extern "C"
 /*  SUBMARINE GAME task define
  */
 /*****************************************************************************/
-#define SB_GAME_TIME_TICK_INTERVAL (150)
+#define SB_GAME_TIME_TICK_INTERVAL (50)
 
 	enum
 	{

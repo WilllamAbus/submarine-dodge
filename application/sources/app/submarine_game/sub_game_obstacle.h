@@ -2,7 +2,7 @@
 #define __SUB_GAME_OBSTACLE_H__
 
 #include "sub_game_submarine.h"
-
+#include "game_time.h"
 #define OBSTACLE_WIDTH      16   /* tăng từ 8 lên 16 */
 #define OBSTACLE_HEIGHT     8
 #define OBSTACLE_SPEED_EASY     1
@@ -15,8 +15,8 @@
 #define ENEMY_BULLET_SPEED  3
 
 typedef struct {
-    int8_t x;
-    int8_t y;
+    int16_t x;
+    int16_t y;
     uint8_t active;
 } enemy_bullet_t;
 
@@ -26,9 +26,9 @@ void sub_game_obstacle_draw_bullets();
 uint8_t sub_game_enemy_bullet_hit_submarine();
 
 typedef struct {
-    int8_t x;
-    int8_t y;
-    int8_t dir;      /* +1: từ phải sang, -1: từ trái sang */
+    int32_t x_fp;
+    int16_t y;
+    int8_t dir;
     uint8_t active;
 } obstacle_t;
 

@@ -3,6 +3,7 @@
 #include "sub_game_boss.h"
 #include "scr_victory.h"
 #include "scr_ranking.h"
+#include "game_time.h"
 #define SB_GAME_SPAWN_INTERVAL (5)
 
 typedef enum
@@ -131,6 +132,8 @@ void scr_submarine_game_handle(ak_msg_t *msg)
     break;
 
     case SB_GAME_TIME_TICK:
+    g_game_clock.delta_ms = SB_GAME_TIME_TICK_INTERVAL;
+    g_game_clock.now_ms += g_game_clock.delta_ms;
     {
         if (game_state != GAME_STATE_PLAYING)
             break;
