@@ -2,10 +2,6 @@
 
 Game submarine dodge
 
-<p align="center">
-  <img src="hardware/images/gameplay.jpg" alt="Gameplay" width="300"/>
-</p>
-
 An action submarine game developed on **AK Embedded Base Kit STM32L151** using the AK kernel event-driven architecture.
 
 ## Table of Contents
@@ -49,31 +45,6 @@ The game features a progressive difficulty system, a Boss battle, a Ranking boar
 - All enemy submarines disappear when Boss appears
 - Defeat Boss → **Victory Screen**
 
-## Game Screens
-[Startup] → [Idle] → [Main Menu]
-├── Submarine Dodge → [Loading] → [Game Play]
-│                                      ↓
-│                               [Game Over / Victory]
-│                                      ↓
-│                                 [Main Menu]
-├── Ranking
-└── Settings
-
-## Project Structure
-application/sources/app/
-├── screens/
-│   ├── scr_main_menu.cpp      # Main menu
-│   ├── scr_loading.cpp        # Loading screen
-│   ├── scr_submarine_game.cpp # Game screen
-│   ├── scr_victory.cpp        # Victory screen
-│   ├── scr_ranking.cpp        # Ranking board
-│   └── scr_settings.cpp       # Settings
-└── submarine_game/
-├── sub_game_submarine.cpp  # Player submarine
-├── sub_game_torpedo.cpp    # Torpedoes
-├── sub_game_obstacle.cpp   # Enemy submarines
-├── sub_game_bang.cpp       # Explosion effects
-└── sub_game_boss.cpp       # Boss
 ---
 
 ## Build & Flash
@@ -101,7 +72,6 @@ ak_flash /dev/ttyUSB0 build_submarine-dodge-application/submarine-dodge-applicat
 | Compiler | arm-none-eabi-gcc 10.3.1 |
 | IDE | VS Code |
 | Flash Tool | AK Flash |
-| Debugger | ST-Link V2 |
 
 ## Architecture
 
@@ -115,7 +85,7 @@ The game uses the **AK kernel** event-driven architecture:
 
 Developed by **[Thai Kha](https://github.com/WilllamAbus)**
 Based on **[AK Embedded Base Kit](https://github.com/the-ak-foundation/ak-base-kit-stm32l151)** by AK Foundation.
-Youtube:**[AK Embedded Base Kit  - Game submarine dodge | STM32L151](https://youtu.be/3-FSJyn7Pys) by Thai Kha
+Youtube on **[ STM32L151](https://youtu.be/3-FSJyn7Pys)** 
 ---
 
 *Inspired by Archery Game — AK Embedded Software*
