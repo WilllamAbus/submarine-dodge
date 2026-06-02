@@ -82,10 +82,11 @@ The game uses the **AK kernel** event-driven architecture:
 - **State machine** manages game states (PLAYING / GAME_OVER)
 
 ## Author
-
-Developed by **[Thai Kha](https://github.com/WilllamAbus)**
-Based on **[AK Embedded Base Kit](https://github.com/the-ak-foundation/ak-base-kit-stm32l151)** by AK Foundation.
-Demo video: [STM32L151](https://youtu.be/3-FSJyn7Pys)
+| Topic | Link |
+| ------ | ------ |
+| Github |  https://github.com/WilllamAbus |
+| Base |  https://github.com/the-ak-foundation/ak-base-kit-stm32l151 |
+| Demo video |https://youtu.be/3-FSJyn7Pys |
 ---
 
 *Inspired by Archery Game — AK Embedded Software*
