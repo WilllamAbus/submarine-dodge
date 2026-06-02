@@ -85,7 +85,7 @@ The game uses the **AK kernel** event-driven architecture:
 
 Developed by **[Thai Kha](https://github.com/WilllamAbus)**
 Based on **[AK Embedded Base Kit](https://github.com/the-ak-foundation/ak-base-kit-stm32l151)** by AK Foundation.
-Youtube on **[ STM32L151](https://youtu.be/3-FSJyn7Pys)** 
+Demo video: [STM32L151](https://youtu.be/3-FSJyn7Pys)
 ---
 
 *Inspired by Archery Game — AK Embedded Software*
