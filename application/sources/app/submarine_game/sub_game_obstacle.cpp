@@ -29,11 +29,10 @@ static const uint8_t obstacle_bitmap[] = {
     0x00,
     0x00, /* ........ ........ */
 };
-
-void sub_game_obstacle_setup()
-{
-    for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-    {
+static uint8_t boss_cleared = 0;
+void sub_game_obstacle_setup() {
+    boss_cleared = 0;
+    for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
         obstacles[i].active = 0;
     }
 }
@@ -198,10 +197,19 @@ static void sub_game_enemy_bullet_shoot() {
 
 static void sub_game_obstacle_spawn_tick() {
     if (boss.active) {
-        for (uint8_t i = 0; i < OBSTACLE_MAX; i++) obstacles[i].active = 0;
-        for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) enemy_bullets[i].active = 0;
+        /* Chỉ xóa 1 lần khi boss vừa xuất hiện */
+        static uint8_t cleared = 0;
+        if (!cleared) {
+            for (uint8_t i = 0; i < OBSTACLE_MAX; i++) obstacles[i].active = 0;
+            for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) enemy_bullets[i].active = 0;
+            cleared = 1;
+        }
         return;
     }
+    /* Reset flag khi boss chưa active */
+    static uint8_t cleared = 0;
+    cleared = 0;
+
     static uint8_t spawn_tick = 0;
     spawn_tick++;
     uint8_t spawn_interval;
