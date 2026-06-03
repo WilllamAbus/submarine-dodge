@@ -121,24 +121,20 @@ void sub_game_obstacle_draw()
 }
 
 /* Kiểm tra obstacle có va chạm tàu ngầm không */
-uint8_t sub_game_obstacle_hit_submarine()
-{
-    for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-    {
-        if (!obstacles[i].active)
-            continue;
-        int16_t x =
-            obstacles[i].x_fp >> FP_SHIFT;
+uint8_t sub_game_obstacle_hit_submarine() {
+    for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
+        if (!obstacles[i].active) continue;
+        int16_t x = obstacles[i].x_fp >> FP_SHIFT;
         if (x < submarine.x + SUBMARINE_WIDTH &&
-            x + OBSTACLE_WIDTH > submarine.x)
-        {
+            x + OBSTACLE_WIDTH > submarine.x &&
+            obstacles[i].y < submarine.y + SUBMARINE_HEIGHT &&   /* ← thêm Y */
+            obstacles[i].y + OBSTACLE_HEIGHT > submarine.y) {    /* ← thêm Y */
             obstacles[i].active = 0;
             return 1;
         }
     }
     return 0;
 }
-
 enemy_bullet_t enemy_bullets[ENEMY_BULLET_MAX];
 
 void sub_game_obstacle_draw_bullets()
