@@ -25,7 +25,7 @@ static const uint8_t bang_bitmap[] = {
 void sub_game_bang_setup() {
     for (uint8_t i = 0; i < BANG_MAX; i++) {
         bangs[i].active = 0;
-        bangs[i].timer  = 0;
+     bangs[i].timer_ms = 0;
     }
 }
 
@@ -33,7 +33,7 @@ void sub_game_bang_spawn(int8_t x, int8_t y) {
     for (uint8_t i = 0; i < BANG_MAX; i++) {
         if (bangs[i].active) continue;
         bangs[i].active = 1;
-        bangs[i].timer  = BANG_DURATION;
+      bangs[i].timer_ms = BANG_DURATION_MS;
         bangs[i].x      = x;
         bangs[i].y      = y;
         break;
@@ -42,10 +42,16 @@ void sub_game_bang_spawn(int8_t x, int8_t y) {
 
 void sub_game_bang_update() {
     for (uint8_t i = 0; i < BANG_MAX; i++) {
-        if (!bangs[i].active) continue;
-        bangs[i].timer--;
-        if (bangs[i].timer == 0) {
+
+        if (!bangs[i].active)
+            continue;
+
+        if (bangs[i].timer_ms <= g_game_clock.delta_ms) {
             bangs[i].active = 0;
+            bangs[i].timer_ms = 0;
+        }
+        else {
+            bangs[i].timer_ms -= g_game_clock.delta_ms;
         }
     }
 }

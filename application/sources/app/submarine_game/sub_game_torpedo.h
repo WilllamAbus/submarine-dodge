@@ -2,17 +2,17 @@
 #define __SUB_GAME_TORPEDO_H__
 
 #include "sub_game_submarine.h"
-
+#include "game_time.h"
 #define TORPEDO_WIDTH       8
 #define TORPEDO_HEIGHT      3
 #define TORPEDO_SPEED       4
 #define TORPEDO_MAX         3    /* Tối đa 3 ngư lôi cùng lúc */
 
 typedef struct {
-    int8_t x;
-    int8_t y;
-    int8_t dir;      /* +1: bay phải, -1: bay trái */
-    uint8_t active;  /* 1: đang bay, 0: không hoạt động */
+    int32_t x_fp;
+    int16_t y;
+    int8_t dir;
+    uint8_t active;
 } torpedo_t;
 
 extern torpedo_t torpedoes[TORPEDO_MAX];

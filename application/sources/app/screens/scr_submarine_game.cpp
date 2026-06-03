@@ -150,20 +150,23 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         {
             boss.active = 1;
         }
-
+       
         /* Torpedo trúng obstacle */
         for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
         {
             if (!obstacles[i].active)
                 continue;
-            if (sub_game_torpedo_hit(obstacles[i].x,
-                                     obstacles[i].y,
-                                     OBSTACLE_WIDTH,
-                                     OBSTACLE_HEIGHT))
+                 int16_t obstacle_x = obstacles[i].x_fp >> FP_SHIFT;
+            if (sub_game_torpedo_hit(obstacle_x,
+                         obstacles[i].y,
+                         OBSTACLE_WIDTH,
+                         OBSTACLE_HEIGHT))
             {
-                obstacles[i].active = 0;
-                sub_game_bang_spawn(obstacles[i].x, obstacles[i].y);
-                sb_game_score += 10;
+               obstacles[i].active = 0;
+    sub_game_bang_spawn(obstacle_x,
+                        obstacles[i].y);
+
+    sb_game_score += 10;
             }
         }
 

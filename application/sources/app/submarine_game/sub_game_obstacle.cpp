@@ -52,12 +52,12 @@ void sub_game_obstacle_spawn(uint8_t from_right)
 
         if (from_right)
         {
-           obstacles[i].x_fp = LCD_WIDTH * FP_ONE;
+            obstacles[i].x_fp = LCD_WIDTH * FP_ONE;
             obstacles[i].dir = -1; /* Bay từ phải sang trái */
         }
         else
         {
-          obstacles[i].x_fp = (-OBSTACLE_WIDTH) * FP_ONE;
+            obstacles[i].x_fp = (-OBSTACLE_WIDTH) * FP_ONE;
             obstacles[i].dir = +1; /* Bay từ trái sang phải */
         }
         break;
@@ -111,7 +111,7 @@ void sub_game_obstacle_draw()
         if (!obstacles[i].active)
             continue;
         view_render.drawBitmap(
-        (obstacles[i].x_fp >> FP_SHIFT),
+            (obstacles[i].x_fp >> FP_SHIFT),
             obstacles[i].y,
             obstacle_bitmap,
             OBSTACLE_WIDTH,
@@ -127,10 +127,10 @@ uint8_t sub_game_obstacle_hit_submarine()
     {
         if (!obstacles[i].active)
             continue;
-int16_t x =
-    obstacles[i].x_fp >> FP_SHIFT;
+        int16_t x =
+            obstacles[i].x_fp >> FP_SHIFT;
         if (x < submarine.x + SUBMARINE_WIDTH &&
-    x + OBSTACLE_WIDTH > submarine.x)
+            x + OBSTACLE_WIDTH > submarine.x)
         {
             obstacles[i].active = 0;
             return 1;
@@ -147,7 +147,9 @@ void sub_game_obstacle_draw_bullets()
     {
         if (!enemy_bullets[i].active)
             continue;
-        view_render.fillRect(enemy_bullets[i].x, enemy_bullets[i].y, 4, 2, WHITE);
+        view_render.fillRect(enemy_bullets[i].x_fp >> FP_SHIFT,
+                             enemy_bullets[i].y,
+                             4, 2, WHITE);
     }
 }
 
@@ -155,10 +157,11 @@ uint8_t sub_game_enemy_bullet_hit_submarine()
 {
     for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
     {
+        int16_t x = enemy_bullets[i].x_fp >> FP_SHIFT;
         if (!enemy_bullets[i].active)
             continue;
-        if (enemy_bullets[i].x < submarine.x + SUBMARINE_WIDTH &&
-            enemy_bullets[i].x + 4 > submarine.x &&
+        if (x < submarine.x + SUBMARINE_WIDTH &&
+            x + 4 > submarine.x &&
             enemy_bullets[i].y < submarine.y + SUBMARINE_HEIGHT &&
             enemy_bullets[i].y + 2 > submarine.y)
         {
@@ -192,8 +195,10 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
         {
             if (!enemy_bullets[i].active)
                 continue;
-            enemy_bullets[i].x -= ENEMY_BULLET_SPEED;
-            if (enemy_bullets[i].x < 0)
+            enemy_bullets[i].x_fp -=
+                (20 * FP_ONE * g_game_clock.delta_ms) / 1000;
+
+            if ((enemy_bullets[i].x_fp >> FP_SHIFT) < 0)
             {
                 enemy_bullets[i].active = 0;
             }
@@ -217,7 +222,7 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
                         if (enemy_bullets[j].active)
                             continue;
                         enemy_bullets[j].active = 1;
-                      enemy_bullets[j].x = obstacles[i].x_fp >> FP_SHIFT;
+                        enemy_bullets[j].x_fp = obstacles[i].x_fp;
                         enemy_bullets[j].y = obstacles[i].y + OBSTACLE_HEIGHT / 2;
                         break;
                     }

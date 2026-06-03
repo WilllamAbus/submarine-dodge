@@ -15,7 +15,7 @@
 #define ENEMY_BULLET_SPEED  3
 
 typedef struct {
-    int16_t x;
+    int32_t x_fp;
     int16_t y;
     uint8_t active;
 } enemy_bullet_t;

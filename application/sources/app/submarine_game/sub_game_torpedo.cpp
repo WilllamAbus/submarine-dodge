@@ -18,10 +18,12 @@ void sub_game_torpedo_update() {
     for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
         if (!torpedoes[i].active) continue;
 
-        torpedoes[i].x += torpedoes[i].dir * TORPEDO_SPEED;
-
+       torpedoes[i].x_fp +=   torpedoes[i].dir *
+    (26 * FP_ONE * g_game_clock.delta_ms) / 1000;
+  
+        int16_t x = torpedoes[i].x_fp >> FP_SHIFT;
         /* Hết màn hình thì deactivate */
-        if (torpedoes[i].x > LCD_WIDTH || torpedoes[i].x < 0) {
+        if (x > LCD_WIDTH || x < 0) {
             torpedoes[i].active = 0;
         }
     }
@@ -31,7 +33,7 @@ void sub_game_torpedo_draw() {
     for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
         if (!torpedoes[i].active) continue;
         view_render.drawBitmap(
-            torpedoes[i].x,
+           torpedoes[i].x_fp >> FP_SHIFT,
             torpedoes[i].y,
             torpedo_bitmap,
             TORPEDO_WIDTH,
@@ -45,9 +47,10 @@ void sub_game_torpedo_draw() {
 uint8_t sub_game_torpedo_hit(int8_t x, int8_t y, uint8_t w, uint8_t h) {
     for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
         if (!torpedoes[i].active) continue;
-
-        if (torpedoes[i].x < x + w &&
-            torpedoes[i].x + TORPEDO_WIDTH > x &&
+int16_t torpedo_x =  torpedoes[i].x_fp >> FP_SHIFT;
+                   
+        if (torpedo_x < x + w &&
+    torpedo_x + TORPEDO_WIDTH > x &&
             torpedoes[i].y < y + h &&
             torpedoes[i].y + TORPEDO_HEIGHT > y) {
             torpedoes[i].active = 0;
@@ -72,7 +75,8 @@ void sub_game_torpedo_handle(ak_msg_t* msg) {
         for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
             if (torpedoes[i].active) continue;
             torpedoes[i].active = 1;
-            torpedoes[i].x     = submarine.x + SUBMARINE_WIDTH;
+          torpedoes[i].x_fp =  (submarine.x + SUBMARINE_WIDTH) * FP_ONE;
+   
             torpedoes[i].y     = submarine.y + SUBMARINE_HEIGHT / 2;
             torpedoes[i].dir   = +1;  /* Bay sang phải */
             game_buzzer_play(tones_3beep);     

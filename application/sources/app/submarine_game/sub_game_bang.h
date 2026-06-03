@@ -2,17 +2,17 @@
 #define __SUB_GAME_BANG_H__
 
 #include "sub_game_submarine.h"
-
+#include "game_time.h"
 #define BANG_WIDTH      16
 #define BANG_HEIGHT     16
-#define BANG_DURATION   5    /* Số frame hiển thị */
+#define BANG_DURATION_MS    300
 #define BANG_MAX        3
 
 typedef struct {
-    int8_t  x;
-    int8_t  y;
+    int8_t x;
+    int8_t y;
     uint8_t active;
-    uint8_t timer;   /* Đếm ngược frame */
+    uint16_t timer_ms;
 } bang_t;
 
 extern bang_t bangs[BANG_MAX];

@@ -81,7 +81,7 @@ The game uses the **AK kernel** event-driven architecture:
 - **Timer** triggers periodic game loop (150ms tick)
 - **State machine** manages game states (PLAYING / GAME_OVER)
 
-## Author
+## Author 
 | Topic | Link |
 | ------ | ------ |
 | Github |  https://github.com/WilllamAbus |

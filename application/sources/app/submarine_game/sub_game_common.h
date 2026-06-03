@@ -1,7 +1,7 @@
 // sub_game_common.h
 #include "scr_settings.h"
 #include "buzzer.h"
-
+#include "game_time.h"
 #ifndef __SUB_GAME_COMMON_H__
 #define __SUB_GAME_COMMON_H__
 
