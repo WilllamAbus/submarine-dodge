@@ -22,4 +22,5 @@ void sub_game_torpedo_update();
 void sub_game_torpedo_draw();
 uint8_t sub_game_torpedo_hit(int8_t x, int8_t y, uint8_t w, uint8_t h);
 void sub_game_torpedo_handle(ak_msg_t* msg);
+void sub_game_torpedo_shoot();
 #endif /* __SUB_GAME_TORPEDO_H__ */

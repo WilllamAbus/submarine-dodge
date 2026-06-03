@@ -197,7 +197,7 @@ void scr_submarine_game_handle(ak_msg_t *msg)
     {
         if (game_state == GAME_STATE_PLAYING)
         {
-            task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_UP);
+            sub_game_submarine_up(); /* Gọi thẳng */
         }
     }
     break;
@@ -206,7 +206,7 @@ void scr_submarine_game_handle(ak_msg_t *msg)
     {
         if (game_state == GAME_STATE_PLAYING)
         {
-            task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_DOWN);
+            sub_game_submarine_down(); /* Gọi thẳng */
         }
     }
     break;
@@ -216,12 +216,10 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_RELEASED\n");
         if (game_state == GAME_STATE_PLAYING)
         {
-            /* Bắn torpedo */
-            task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_SHOOT);
+            sub_game_torpedo_shoot(); /* Gọi thẳng */
         }
         else
         {
-            /* Restart game */
             timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
             SCREEN_TRAN(scr_main_menu_handle, &scr_main_menu);
         }

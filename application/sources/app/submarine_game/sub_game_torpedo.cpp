@@ -60,7 +60,17 @@ int16_t torpedo_x =  torpedoes[i].x_fp >> FP_SHIFT;
     return 0;
 }
 
-
+void sub_game_torpedo_shoot() {
+    for (uint8_t i = 0; i < TORPEDO_MAX; i++) {
+        if (torpedoes[i].active) continue;
+        torpedoes[i].active = 1;
+        torpedoes[i].x_fp   = (submarine.x + SUBMARINE_WIDTH) << FP_SHIFT;
+        torpedoes[i].y      = submarine.y + SUBMARINE_HEIGHT / 2;
+        torpedoes[i].dir    = +1;
+        game_buzzer_play(tones_3beep);
+        break;
+    }
+}
 void sub_game_torpedo_handle(ak_msg_t* msg) {
     switch (msg->sig) {
     case SB_GAME_TORPEDO_SETUP: {
