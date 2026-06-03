@@ -32,9 +32,14 @@
 
 
 /* Struct tàu ngầm */
-typedef struct {
-    int8_t x;
-    int8_t y;
+typedef struct
+{
+    int16_t x;
+    int16_t y;
+
+    int32_t y_fp;
+    int32_t velocity_y_fp;
+
     uint8_t is_alive;
 } submarine_t;
 

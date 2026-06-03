@@ -29,10 +29,14 @@ static const uint8_t obstacle_bitmap[] = {
     0x00,
     0x00, /* ........ ........ */
 };
+static uint32_t shoot_timer_ms = 0;
+static uint32_t spawn_timer_ms = 0;
 static uint8_t boss_cleared = 0;
-void sub_game_obstacle_setup() {
+void sub_game_obstacle_setup()
+{
     boss_cleared = 0;
-    for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
+    for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+    {
         obstacles[i].active = 0;
     }
 }
@@ -120,14 +124,18 @@ void sub_game_obstacle_draw()
 }
 
 /* Kiểm tra obstacle có va chạm tàu ngầm không */
-uint8_t sub_game_obstacle_hit_submarine() {
-    for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
-        if (!obstacles[i].active) continue;
+uint8_t sub_game_obstacle_hit_submarine()
+{
+    for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+    {
+        if (!obstacles[i].active)
+            continue;
         int16_t x = obstacles[i].x_fp >> FP_SHIFT;
         if (x < submarine.x + SUBMARINE_WIDTH &&
             x + OBSTACLE_WIDTH > submarine.x &&
-            obstacles[i].y < submarine.y + SUBMARINE_HEIGHT &&   /* ← thêm Y */
-            obstacles[i].y + OBSTACLE_HEIGHT > submarine.y) {    /* ← thêm Y */
+            obstacles[i].y < submarine.y + SUBMARINE_HEIGHT && /* ← thêm Y */
+            obstacles[i].y + OBSTACLE_HEIGHT > submarine.y)
+        { /* ← thêm Y */
             obstacles[i].active = 0;
             return 1;
         }
@@ -166,42 +174,57 @@ uint8_t sub_game_enemy_bullet_hit_submarine()
     }
     return 0;
 }
-static void sub_game_enemy_bullet_update() {
-    for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) {
-        if (!enemy_bullets[i].active) continue;
+static void sub_game_enemy_bullet_update()
+{
+    for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
+    {
+        if (!enemy_bullets[i].active)
+            continue;
         enemy_bullets[i].x_fp -= (20 * FP_ONE * g_game_clock.delta_ms) / 1000;
-        if ((enemy_bullets[i].x_fp >> FP_SHIFT) < 0) {
+        if ((enemy_bullets[i].x_fp >> FP_SHIFT) < 0)
+        {
             enemy_bullets[i].active = 0;
         }
     }
 }
 
-static void sub_game_enemy_bullet_shoot() {
-    if (boss.active) return;
-    static uint8_t shoot_tick = 0;
-    shoot_tick++;
-    if (shoot_tick >= 8) {
-        shoot_tick = 0;
-        for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
-            if (!obstacles[i].active) continue;
-            for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++) {
-                if (enemy_bullets[j].active) continue;
+static void sub_game_enemy_bullet_shoot()
+{
+    if (boss.active)
+        return;
+    shoot_timer_ms += g_game_clock.delta_ms;
+    if (shoot_timer_ms >= 1200)
+    {
+        shoot_timer_ms = 0;
+        for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+        {
+            if (!obstacles[i].active)
+                continue;
+            for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++)
+            {
+                if (enemy_bullets[j].active)
+                    continue;
                 enemy_bullets[j].active = 1;
-                enemy_bullets[j].x_fp   = obstacles[i].x_fp;
-                enemy_bullets[j].y      = obstacles[i].y + OBSTACLE_HEIGHT / 2;
+                enemy_bullets[j].x_fp = obstacles[i].x_fp;
+                enemy_bullets[j].y = obstacles[i].y + OBSTACLE_HEIGHT / 2;
                 break;
             }
         }
     }
 }
 
-static void sub_game_obstacle_spawn_tick() {
-    if (boss.active) {
+static void sub_game_obstacle_spawn_tick()
+{
+    if (boss.active)
+    {
         /* Chỉ xóa 1 lần khi boss vừa xuất hiện */
         static uint8_t cleared = 0;
-        if (!cleared) {
-            for (uint8_t i = 0; i < OBSTACLE_MAX; i++) obstacles[i].active = 0;
-            for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) enemy_bullets[i].active = 0;
+        if (!cleared)
+        {
+            for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
+                obstacles[i].active = 0;
+            for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
+                enemy_bullets[i].active = 0;
             cleared = 1;
         }
         return;
@@ -209,27 +232,31 @@ static void sub_game_obstacle_spawn_tick() {
     /* Reset flag khi boss chưa active */
     static uint8_t cleared = 0;
     cleared = 0;
+    spawn_timer_ms += g_game_clock.delta_ms;
 
-    static uint8_t spawn_tick = 0;
-    spawn_tick++;
-    uint8_t spawn_interval;
-    switch (game_settings.speed) {
-        case SPEED_EASY: spawn_interval = 8; break;
-        case SPEED_HARD: spawn_interval = 3; break;
-        default:         spawn_interval = 5; break;
+    uint16_t spawn_interval_ms;
+    switch (game_settings.speed)
+    {
+    case SPEED_EASY:
+        spawn_interval_ms = 1800;
+        break;
+
+    case SPEED_HARD:
+        spawn_interval_ms = 800;
+        break;
+
+    default:
+        spawn_interval_ms = 1200;
+        break;
     }
-    if (spawn_tick >= spawn_interval) {
-        spawn_tick = 0;
+    if (spawn_timer_ms >= spawn_interval_ms)
+    {
+        spawn_timer_ms = 0;
         sub_game_obstacle_spawn(1);
     }
 }
 
-void sub_game_obstacle_update_all() {
-    sub_game_obstacle_update();
-    sub_game_enemy_bullet_update();
-    sub_game_enemy_bullet_shoot();
-    sub_game_obstacle_spawn_tick();
-}
+
 void sub_game_obstacle_handle(ak_msg_t *msg)
 {
     switch (msg->sig)
@@ -244,89 +271,7 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
     }
     break;
 
-    case SB_GAME_OBSTACLE_RUN:
-    {
-        sub_game_obstacle_update();
-
-        /* Update đạn địch */
-        for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
-        {
-            if (!enemy_bullets[i].active)
-                continue;
-            enemy_bullets[i].x_fp -=
-                (20 * FP_ONE * g_game_clock.delta_ms) / 1000;
-
-            if ((enemy_bullets[i].x_fp >> FP_SHIFT) < 0)
-            {
-                enemy_bullets[i].active = 0;
-            }
-        }
-
-        /* Chỉ spawn và bắn khi boss chưa xuất hiện */
-        if (!boss.active)
-        {
-            /* Tàu địch bắn tự động */
-            static uint8_t shoot_tick = 0;
-            shoot_tick++;
-            if (shoot_tick >= 8)
-            {
-                shoot_tick = 0;
-                for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-                {
-                    if (!obstacles[i].active)
-                        continue;
-                    for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++)
-                    {
-                        if (enemy_bullets[j].active)
-                            continue;
-                        enemy_bullets[j].active = 1;
-                        enemy_bullets[j].x_fp = obstacles[i].x_fp;
-                        enemy_bullets[j].y = obstacles[i].y + OBSTACLE_HEIGHT / 2;
-                        break;
-                    }
-                }
-            }
-
-            /* Spawn obstacle */
-            /* Spawn obstacle theo speed */
-            static uint8_t spawn_tick = 0;
-            spawn_tick++;
-
-            uint8_t spawn_interval;
-            switch (game_settings.speed)
-            {
-            case SPEED_EASY:
-                spawn_interval = 8;
-                break;
-            case SPEED_HARD:
-                spawn_interval = 3;
-                break;
-            default:
-                spawn_interval = 5;
-                break;
-            }
-
-            if (spawn_tick >= spawn_interval)
-            {
-                spawn_tick = 0;
-                sub_game_obstacle_spawn(1);
-            }
-        }
-        else
-        {
-            /* Boss xuất hiện → xóa hết obstacle và đạn còn lại */
-            for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
-            {
-                obstacles[i].active = 0;
-            }
-            for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++)
-            {
-                enemy_bullets[i].active = 0;
-            }
-        }
-    }
-    break;
-
+ 
     case SB_GAME_OBSTACLE_RESET:
     {
         sub_game_obstacle_setup();
@@ -338,3 +283,10 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
     }
 }
 
+void sub_game_obstacle_update_all()
+{
+    sub_game_obstacle_update();
+    sub_game_enemy_bullet_update();
+    sub_game_enemy_bullet_shoot();
+    sub_game_obstacle_spawn_tick();
+}
