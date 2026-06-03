@@ -125,3 +125,21 @@ break;
         break;
     }
 }
+
+void sub_game_submarine_update() {
+    int16_t dy = (int16_t)(auto_move_dir * SUBMARINE_AUTO_SPEED_PPS 
+                          * g_game_clock.delta_ms) / 1000;
+    auto_y_fp += dy << FP_SHIFT;
+    submarine.y = auto_y_fp >> FP_SHIFT;
+
+    if (submarine.y >= SUBMARINE_Y_MAX - SUBMARINE_HEIGHT - 2) {
+        auto_move_dir = -1;
+        submarine.y   = SUBMARINE_Y_MAX - SUBMARINE_HEIGHT - 2;
+        auto_y_fp     = submarine.y << FP_SHIFT;
+    }
+    if (submarine.y <= SUBMARINE_Y_MIN + 2) {
+        auto_move_dir = 1;
+        submarine.y   = SUBMARINE_Y_MIN + 2;
+        auto_y_fp     = submarine.y << FP_SHIFT;
+    }
+}

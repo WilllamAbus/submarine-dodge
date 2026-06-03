@@ -55,7 +55,9 @@ void sub_game_bang_update() {
         }
     }
 }
-
+void sub_game_bang_update_all() {
+    sub_game_bang_update();
+}
 void sub_game_bang_draw() {
     for (uint8_t i = 0; i < BANG_MAX; i++) {
         if (!bangs[i].active) continue;

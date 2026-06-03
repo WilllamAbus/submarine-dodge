@@ -167,7 +167,61 @@ uint8_t sub_game_enemy_bullet_hit_submarine()
     }
     return 0;
 }
+static void sub_game_enemy_bullet_update() {
+    for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) {
+        if (!enemy_bullets[i].active) continue;
+        enemy_bullets[i].x_fp -= (20 * FP_ONE * g_game_clock.delta_ms) / 1000;
+        if ((enemy_bullets[i].x_fp >> FP_SHIFT) < 0) {
+            enemy_bullets[i].active = 0;
+        }
+    }
+}
 
+static void sub_game_enemy_bullet_shoot() {
+    if (boss.active) return;
+    static uint8_t shoot_tick = 0;
+    shoot_tick++;
+    if (shoot_tick >= 8) {
+        shoot_tick = 0;
+        for (uint8_t i = 0; i < OBSTACLE_MAX; i++) {
+            if (!obstacles[i].active) continue;
+            for (uint8_t j = 0; j < ENEMY_BULLET_MAX; j++) {
+                if (enemy_bullets[j].active) continue;
+                enemy_bullets[j].active = 1;
+                enemy_bullets[j].x_fp   = obstacles[i].x_fp;
+                enemy_bullets[j].y      = obstacles[i].y + OBSTACLE_HEIGHT / 2;
+                break;
+            }
+        }
+    }
+}
+
+static void sub_game_obstacle_spawn_tick() {
+    if (boss.active) {
+        for (uint8_t i = 0; i < OBSTACLE_MAX; i++) obstacles[i].active = 0;
+        for (uint8_t i = 0; i < ENEMY_BULLET_MAX; i++) enemy_bullets[i].active = 0;
+        return;
+    }
+    static uint8_t spawn_tick = 0;
+    spawn_tick++;
+    uint8_t spawn_interval;
+    switch (game_settings.speed) {
+        case SPEED_EASY: spawn_interval = 8; break;
+        case SPEED_HARD: spawn_interval = 3; break;
+        default:         spawn_interval = 5; break;
+    }
+    if (spawn_tick >= spawn_interval) {
+        spawn_tick = 0;
+        sub_game_obstacle_spawn(1);
+    }
+}
+
+void sub_game_obstacle_update_all() {
+    sub_game_obstacle_update();
+    sub_game_enemy_bullet_update();
+    sub_game_enemy_bullet_shoot();
+    sub_game_obstacle_spawn_tick();
+}
 void sub_game_obstacle_handle(ak_msg_t *msg)
 {
     switch (msg->sig)
@@ -275,3 +329,4 @@ void sub_game_obstacle_handle(ak_msg_t *msg)
         break;
     }
 }
+

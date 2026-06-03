@@ -22,4 +22,5 @@ void sub_game_bang_spawn(int8_t x, int8_t y);
 void sub_game_bang_update();
 void sub_game_bang_draw();
 void sub_game_bang_handle(ak_msg_t* msg);
+void sub_game_bang_update_all();
 #endif /* __SUB_GAME_BANG_H__ */

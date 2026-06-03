@@ -98,8 +98,9 @@ static void view_scr_submarine_game()
         view_render.print("MODE to menu");
     }
 }
-static void handle_game_over() {
-    ranking_update(sb_game_score);  /* Lưu điểm vào ranking */
+static void handle_game_over()
+{
+    ranking_update(sb_game_score); /* Lưu điểm vào ranking */
     sub_game_bang_spawn(submarine.x, submarine.y);
     game_buzzer_play(tones_3beep);
     game_state = GAME_STATE_OVER;
@@ -132,41 +133,39 @@ void scr_submarine_game_handle(ak_msg_t *msg)
     break;
 
     case SB_GAME_TIME_TICK:
-    g_game_clock.delta_ms = SB_GAME_TIME_TICK_INTERVAL;
-    g_game_clock.now_ms += g_game_clock.delta_ms;
     {
+        /* Cập nhật game clock */
+        g_game_clock.delta_ms = SB_GAME_TIME_TICK_INTERVAL;
+        g_game_clock.now_ms += g_game_clock.delta_ms;
+
         if (game_state != GAME_STATE_PLAYING)
             break;
 
-        /* Update tất cả object */
-        task_post_pure_msg(SB_GAME_TORPEDO_ID, SB_GAME_TORPEDO_RUN);
-        task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_RUN);
-        task_post_pure_msg(SB_GAME_BANG_ID, SB_GAME_BANG_UPDATE);
-        task_post_pure_msg(SB_GAME_SUBMARINE_ID, SB_GAME_SUBMARINE_UPDATE);
-        task_post_pure_msg(SB_GAME_BOSS_ID, SB_GAME_BOSS_UPDATE);
+        /* ── Scheduler: gọi thẳng update, không qua message ── */
+        sub_game_submarine_update(); /* auto move */
+        sub_game_torpedo_update();
+        sub_game_obstacle_update_all();
+        sub_game_bang_update_all();
+        sub_game_boss_update();
 
-        /* Kích hoạt boss khi đạt 200 điểm */
+        /* Kích hoạt boss */
         if (sb_game_score >= BOSS_SCORE_TRIGGER && !boss.active && boss.hp > 0)
         {
             boss.active = 1;
         }
-       
+
         /* Torpedo trúng obstacle */
         for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
         {
             if (!obstacles[i].active)
                 continue;
-                 int16_t obstacle_x = obstacles[i].x_fp >> FP_SHIFT;
-            if (sub_game_torpedo_hit(obstacle_x,
-                         obstacles[i].y,
-                         OBSTACLE_WIDTH,
-                         OBSTACLE_HEIGHT))
+            int16_t obstacle_x = obstacles[i].x_fp >> FP_SHIFT;
+            if (sub_game_torpedo_hit(obstacle_x, obstacles[i].y,
+                                     OBSTACLE_WIDTH, OBSTACLE_HEIGHT))
             {
-               obstacles[i].active = 0;
-    sub_game_bang_spawn(obstacle_x,
-                        obstacles[i].y);
-
-    sb_game_score += 10;
+                obstacles[i].active = 0;
+                sub_game_bang_spawn(obstacle_x, obstacles[i].y);
+                sb_game_score += 10;
             }
         }
 
