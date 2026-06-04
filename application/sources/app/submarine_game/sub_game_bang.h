@@ -3,16 +3,18 @@
 
 #include "sub_game_submarine.h"
 #include "game_time.h"
-#define BANG_WIDTH      16
-#define BANG_HEIGHT     16
-#define BANG_DURATION_MS    300
-#define BANG_MAX        3
+#define BANG_WIDTH          16
+#define BANG_HEIGHT         16
+#define BANG_MAX            5
+#define BANG_FRAME_COUNT    4
+#define BANG_FRAME_MS       80   /* mỗi frame 80ms */
 
 typedef struct {
-    int8_t x;
-    int8_t y;
-    uint8_t active;
-    uint16_t timer_ms;
+    int8_t   x;
+    int8_t   y;
+    uint8_t  active;
+    uint8_t  frame;         /* frame hiện tại 0-3 */
+    uint32_t timer_ms;      /* đếm thời gian frame */
 } bang_t;
 
 extern bang_t bangs[BANG_MAX];

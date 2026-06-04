@@ -4,6 +4,7 @@
 #include "scr_victory.h"
 #include "scr_ranking.h"
 #include "game_time.h"
+#include "game_scheduler.h"
 #define SB_GAME_SPAWN_INTERVAL (5)
 
 typedef enum
@@ -124,6 +125,8 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         task_post_pure_msg(SB_GAME_OBSTACLE_ID, SB_GAME_OBSTACLE_SETUP);
         task_post_pure_msg(SB_GAME_BANG_ID, SB_GAME_BANG_SETUP);
         task_post_pure_msg(SB_GAME_BOSS_ID, SB_GAME_BOSS_SETUP);
+
+        game_scheduler_init();
         /* Bắt đầu timer game loop */
         timer_set(AC_TASK_DISPLAY_ID,
                   SB_GAME_TIME_TICK,
@@ -149,10 +152,7 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         sub_game_boss_update();
 
         /* Kích hoạt boss */
-        if (sb_game_score >= BOSS_SCORE_TRIGGER && !boss.active && boss.hp > 0)
-        {
-            boss.active = 1;
-        }
+        game_scheduler_update(sb_game_score);
 
         /* Torpedo trúng obstacle */
         for (uint8_t i = 0; i < OBSTACLE_MAX; i++)
@@ -174,11 +174,19 @@ void scr_submarine_game_handle(ak_msg_t *msg)
         {
             sub_game_bang_spawn(boss.x, boss.y);
             sb_game_score += 10;
-            if (boss.hp == 0)
+            if (g_game_phase ==
+                GAME_PHASE_VICTORY)
             {
                 victory_score = sb_game_score;
-                timer_remove_attr(AC_TASK_DISPLAY_ID, SB_GAME_TIME_TICK);
-                SCREEN_TRAN(scr_victory_handle, &scr_victory);
+
+                timer_remove_attr(
+                    AC_TASK_DISPLAY_ID,
+                    SB_GAME_TIME_TICK);
+
+                SCREEN_TRAN(
+                    scr_victory_handle,
+                    &scr_victory);
+
                 break;
             }
         }

@@ -1,0 +1,2 @@
+sources/app/screens/scr_loading.cpp:59:6:void scr_loading_handle(ak_msg_t*)	8	static
+sources/app/screens/scr_loading.cpp:29:13:void view_scr_loading()	24	static
