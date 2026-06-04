@@ -6,7 +6,7 @@
 #define TORPEDO_WIDTH       8
 #define TORPEDO_HEIGHT      3
 #define TORPEDO_SPEED       4
-#define TORPEDO_MAX         3    /* Tối đa 3 ngư lôi cùng lúc */
+#define TORPEDO_MAX         5    /* Tối đa 3 ngư lôi cùng lúc */
 
 typedef struct {
     int32_t x_fp;

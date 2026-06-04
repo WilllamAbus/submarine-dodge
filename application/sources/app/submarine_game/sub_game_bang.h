@@ -5,7 +5,7 @@
 #include "game_time.h"
 #define BANG_WIDTH          16
 #define BANG_HEIGHT         16
-#define BANG_MAX            5
+#define BANG_MAX            3
 #define BANG_FRAME_COUNT    4
 #define BANG_FRAME_MS       80   /* mỗi frame 80ms */
 
