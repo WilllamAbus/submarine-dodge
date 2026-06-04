@@ -78,7 +78,7 @@ ak_flash /dev/ttyUSB0 build_submarine-dodge-application/submarine-dodge-applicat
 The game uses the **AK kernel** event-driven architecture:
 - Each game object runs as an independent **Task**
 - Communication via **Signals** (messages)
-- **Timer** triggers periodic game loop (150ms tick)
+- **Time-based** conversion (GameClock, FixedPoint)
 - **State machine** manages game states (PLAYING / GAME_OVER)
 
 ## Author 

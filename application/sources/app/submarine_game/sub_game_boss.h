@@ -6,7 +6,9 @@
 
 #define BOSS_WIDTH              32
 #define BOSS_HEIGHT             16
-#define BOSS_HP_MAX             100
+#define BOSS_HP_EASY    50
+#define BOSS_HP_NORMAL  100
+#define BOSS_HP_HARD    150
 #define BOSS_BULLET_MAX         4
 #define BOSS_SCORE_TRIGGER      200
 

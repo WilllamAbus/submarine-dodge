@@ -1,10 +1,10 @@
 #include "sub_game_boss.h"
 #include "sub_game_torpedo.h"
 #include "game_time.h"
+#include "scr_settings.h"
 boss_t boss;
 boss_bullet_t boss_bullets[BOSS_BULLET_MAX];
 
-static uint8_t shoot_tick = 0;
 
 /* Bitmap boss 32x16px - tàu ngầm lớn */
 static const uint8_t boss_bitmap[] = {
@@ -146,8 +146,21 @@ void sub_game_boss_setup()
     boss.y_fp = boss.y << FP_SHIFT;
     boss.dir = 1;
     boss.active = 0;
-    boss.hp = BOSS_HP_MAX;
     shoot_timer_ms = 0;
+
+    /* HP theo difficulty */
+    switch (game_settings.speed)
+    {
+    case SPEED_EASY:
+        boss.hp = BOSS_HP_EASY;
+        break;
+    case SPEED_HARD:
+        boss.hp = BOSS_HP_HARD;
+        break;
+    default:
+        boss.hp = BOSS_HP_NORMAL;
+        break;
+    }
 
     for (uint8_t i = 0; i < BOSS_BULLET_MAX; i++)
     {
@@ -181,7 +194,13 @@ void sub_game_boss_draw_hp()
         return;
 
     /* Vẽ thanh HP boss */
-    uint8_t bar_width = (boss.hp * 60) / BOSS_HP_MAX;
+  uint8_t boss_hp_max;
+switch (game_settings.speed) {
+    case SPEED_EASY:  boss_hp_max = BOSS_HP_EASY;   break;
+    case SPEED_HARD:  boss_hp_max = BOSS_HP_HARD;   break;
+    default:          boss_hp_max = BOSS_HP_NORMAL; break;
+}
+uint8_t bar_width = (boss.hp * 60) / boss_hp_max;
     view_render.drawRect(34, 2, 60, 5, WHITE);
     if (bar_width > 0)
     {
@@ -212,7 +231,7 @@ uint8_t sub_game_boss_hit_by_torpedo()
         {
             torpedoes[i].active = 0;
             boss.hp -= 10;
-            if (boss.hp <= 0 || boss.hp > BOSS_HP_MAX)
+            if (boss.hp <= 0)
             {
                 boss.hp = 0;
                 boss.active = 0;
