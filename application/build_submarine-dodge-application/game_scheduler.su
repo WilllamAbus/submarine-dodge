@@ -1,3 +1,0 @@
-sources/app/submarine_game/game_scheduler.cpp:7:6:void game_scheduler_init()	0	static
-sources/app/submarine_game/game_scheduler.cpp:15:6:void game_scheduler_update(uint32_t)	0	static
-sources/app/submarine_game/game_scheduler.cpp:43:6:void game_scheduler_boss_killed()	0	static
