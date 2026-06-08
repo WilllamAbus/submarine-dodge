@@ -86,7 +86,7 @@ The game uses the **AK kernel** event-driven architecture:
 | ------ | ------ |
 | Github |  https://github.com/WilllamAbus |
 | Base |  https://github.com/the-ak-foundation/ak-base-kit-stm32l151 |
-| Demo video |https://youtu.be/3-FSJyn7Pys |
+| Demo video |https://youtu.be/_UUsJYBmcCc |
 ---
 
 *Inspired by Archery Game — AK Embedded Software*
